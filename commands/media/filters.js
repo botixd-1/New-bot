@@ -115,7 +115,7 @@ async function requestFilteredImage(imageUrl, filterName) {
 }
 
 export default {
-  command: Object.keys(FILTER_ALIASES),
+  command: ["filtros", ...Object.keys(FILTER_ALIASES)],
   category: "media",
   description: "Aplica un filtro (blur, pixelate, gay, glitch, wave, sticker, gris, invertir, sepia) a una imagen",
 
