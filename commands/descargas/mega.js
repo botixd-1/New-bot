@@ -1,16 +1,12 @@
 import fs from "fs";
 import path from "path";
 import os from "os";
-import axios from "axios";
-import { pipeline } from "stream/promises";
-import { buildDvyerUrl, getDvyerBaseUrl, withDvyerApiKey } from "../../lib/api-manager.js";
+import { File } from "megajs";
 import { chargeDownloadRequest, refundDownloadCharge } from "../economia/download-access.js";
 import { sanitizeProviderMessage } from "./_errorMessages.js";
 import { buildDownloadCard, buildUsageCard } from "./_downloadUi.js";
 
-const API_MEGA_URL = buildDvyerUrl("/mega");
 const COOLDOWN_TIME = 0;
-const REQUEST_TIMEOUT = 180000;
 const MAX_FILE_BYTES = 2 * 1024 * 1024 * 1024;
 const TMP_DIR = path.join(os.tmpdir(), "dvyer-mega");
 
@@ -102,33 +98,6 @@ function extractMegaUrl(text) {
   return match ? match[0].trim() : "";
 }
 
-function extractApiError(data, status) {
-  return (
-    data?.detail ||
-    data?.error?.message ||
-    data?.message ||
-    (status ? `HTTP ${status}` : "Error de API")
-  );
-}
-
-function parseContentDispositionFileName(headerValue) {
-  const text = String(headerValue || "");
-  const utfMatch = text.match(/filename\*=UTF-8''([^;]+)/i);
-
-  if (utfMatch?.[1]) {
-    try {
-      return decodeURIComponent(utfMatch[1]).replace(/["']/g, "").trim();
-    } catch {}
-  }
-
-  const normalMatch = text.match(/filename="?([^"]+)"?/i);
-  if (normalMatch?.[1]) {
-    return normalMatch[1].trim();
-  }
-
-  return "";
-}
-
 function deleteFileSafe(filePath) {
   try {
     if (filePath && fs.existsSync(filePath)) {
@@ -153,113 +122,62 @@ function humanBytes(bytes) {
   return `${value >= 100 || index === 0 ? value.toFixed(0) : value.toFixed(1)} ${units[index]}`;
 }
 
-async function readStreamToText(stream) {
-  return await new Promise((resolve, reject) => {
-    let data = "";
-
-    stream.on("data", (chunk) => {
-      data += chunk.toString();
-    });
-
-    stream.on("end", () => resolve(data));
-    stream.on("error", reject);
-  });
-}
-
-async function apiGet(url, params, timeout = 45000) {
-  const response = await axios.get(url, {
-    timeout,
-    params: withDvyerApiKey(params),
-    validateStatus: () => true,
-  });
-
-  const data = response.data;
-
-  if (response.status >= 400) {
-    throw new Error(extractApiError(data, response.status));
-  }
-
-  if (data?.ok === false || data?.status === false) {
-    throw new Error(extractApiError(data, response.status));
-  }
-
-  return data;
-}
-
 async function requestMegaMeta(fileUrl) {
-  const data = await apiGet(
-    API_MEGA_URL,
-    {
-      mode: "link",
-      url: fileUrl,
-    },
-    45000
-  );
+  const file = File.fromURL(fileUrl);
+  file.api.userAgent =
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122 Safari/537.36";
+
+  await file.loadAttributes();
+
+  if (file?.directory || file?.children) {
+    throw new Error("Ese enlace es una carpeta, no un archivo. Envía el link directo de un archivo.");
+  }
+
+  const rawName = file.name || `mega-${Date.now()}`;
 
   return {
-    title: safeFileName(data?.title || data?.filename || "MEGA File"),
-    fileName: normalizeFileName(data?.filename || "mega-file"),
-    fileSize: String(data?.filesize || "").trim() || null,
-    fileSizeBytes: Number(data?.filesize_bytes || 0) || null,
-    format: String(data?.format || "").trim() || null,
+    file,
+    title: safeFileName(rawName),
+    fileName: normalizeFileName(rawName),
+    fileSizeBytes: Number(file.size || 0) || null,
+    fileSize: humanBytes(file.size || 0),
   };
 }
 
-async function downloadMegaFile(fileUrl, outputPath) {
-  const response = await axios.get(API_MEGA_URL, {
-    responseType: "stream",
-    timeout: REQUEST_TIMEOUT,
-    params: {
-      mode: "file",
-      url: fileUrl,
-      ...withDvyerApiKey(),
-    },
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122 Safari/537.36",
-      Accept: "*/*",
-      Referer: `${getDvyerBaseUrl()}/`,
-    },
-    validateStatus: () => true,
-    maxRedirects: 5,
-  });
-
-  if (response.status >= 400) {
-    const errorText = await readStreamToText(response.data).catch(() => "");
-    let parsed = null;
-
-    try {
-      parsed = JSON.parse(errorText);
-    } catch {}
-
-    throw new Error(
-      extractApiError(
-        parsed || { message: errorText || "No se pudo descargar el archivo." },
-        response.status
-      )
-    );
+async function downloadMegaFile(file, outputPath) {
+  const outputDir = path.dirname(outputPath);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const contentLength = Number(response.headers?.["content-length"] || 0);
-  if (contentLength && contentLength > MAX_FILE_BYTES) {
+  if (file.size && file.size > MAX_FILE_BYTES) {
     throw new Error("El archivo es demasiado grande para enviarlo por WhatsApp.");
   }
 
-  let downloaded = 0;
+  await new Promise((resolve, reject) => {
+    let downloaded = 0;
+    const stream = file.download();
+    const writer = fs.createWriteStream(outputPath);
 
-  response.data.on("data", (chunk) => {
-    downloaded += chunk.length;
-    if (downloaded > MAX_FILE_BYTES) {
-      response.data.destroy(new Error("El archivo es demasiado grande para enviarlo por WhatsApp."));
-    }
-  });
+    stream.on("data", (chunk) => {
+      downloaded += chunk.length;
+      if (downloaded > MAX_FILE_BYTES) {
+        stream.destroy(new Error("El archivo es demasiado grande para enviarlo por WhatsApp."));
+      }
+    });
 
-  try {
-    await pipeline(response.data, fs.createWriteStream(outputPath));
-  } catch (error) {
+    stream.on("error", (err) => {
+      writer.destroy();
+      reject(err);
+    });
+    writer.on("error", reject);
+    writer.on("finish", resolve);
+
+    stream.pipe(writer);
+  }).catch((error) => {
     deleteFileSafe(outputPath);
     throw error;
-  }
+  });
 
   if (!fs.existsSync(outputPath)) {
     throw new Error("No se pudo guardar el archivo.");
@@ -276,20 +194,15 @@ async function downloadMegaFile(fileUrl, outputPath) {
     throw new Error("El archivo es demasiado grande para enviarlo por WhatsApp.");
   }
 
-  const detectedName = parseContentDispositionFileName(
-    response.headers?.["content-disposition"]
-  );
-
   return {
     tempPath: outputPath,
     size,
-    fileName: normalizeFileName(detectedName || path.basename(outputPath), "mega-file"),
   };
 }
 
 async function sendMegaDocument(sock, from, quoted, payload) {
   const { filePath, fileName, title, fileSize, fileSizeBytes, size } = payload;
-  const lines = ["DVYER API", "", `Archivo: ${title}`];
+  const lines = ["MEGA (descarga directa)", "", `Archivo: ${title}`];
   if (fileSize) {
     lines.push(`Tamano: ${fileSize}`);
   } else {
@@ -377,10 +290,7 @@ export default {
         {
           text: buildDownloadCard("☁️ *MEGA*", [
             {
-              lines: [
-                "Preparando archivo para descarga...",
-                `API: ${getDvyerBaseUrl()}`,
-              ],
+              lines: ["Preparando archivo para descarga directa de MEGA..."],
             },
           ]),
           ...global.channelInfo,
@@ -391,11 +301,11 @@ export default {
       const info = await requestMegaMeta(fileUrl);
       tempPath = path.join(TMP_DIR, `${Date.now()}-${info.fileName}`);
 
-      const downloaded = await downloadMegaFile(fileUrl, tempPath);
+      const downloaded = await downloadMegaFile(info.file, tempPath);
 
       await sendMegaDocument(sock, from, quoted, {
         filePath: downloaded.tempPath,
-        fileName: normalizeFileName(downloaded.fileName || info.fileName, "mega-file"),
+        fileName: info.fileName,
         title: info.title,
         fileSize: info.fileSize,
         fileSizeBytes: info.fileSizeBytes,
@@ -409,16 +319,21 @@ export default {
       });
       cooldowns.delete(userId);
 
+      const rawMsg = String(error?.message || "");
+      const isQuota = /quota|limit|over ?bandwidth|EOVERQUOTA/i.test(rawMsg);
+
       await sock.sendMessage(
         from,
         {
           text: buildDownloadCard("❌ *MEGA*", [
             {
               lines: [
-                sanitizeProviderMessage(error, {
-                  kind: "file",
-                  fallback: "No se pudo procesar el archivo de MEGA.",
-                }),
+                isQuota
+                  ? "MEGA limitó la descarga por cuota de ancho de banda de la IP del servidor. Intenta más tarde."
+                  : sanitizeProviderMessage(error, {
+                      kind: "file",
+                      fallback: "No se pudo procesar el archivo de MEGA.",
+                    }),
               ],
             },
           ]),

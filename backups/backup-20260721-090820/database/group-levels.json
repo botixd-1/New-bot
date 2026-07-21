@@ -1,0 +1,2331 @@
+{
+  "trackedSince": "2026-05-06T23:43:05.252Z",
+  "groups": {
+    "120363409325737726@g.us": {
+      "enabled": true,
+      "users": {
+        "51907376960": {
+          "id": "51907376960",
+          "xp": 24,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 0,
+          "commands": 2,
+          "lastMessageXpAt": 0,
+          "lastCommandXpAt": 1778111159266,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:45:59.266Z"
+        }
+      },
+      "updatedAt": "2026-05-06T23:45:59.266Z"
+    },
+    "120363425735543316@g.us": {
+      "enabled": true,
+      "users": {
+        "51990237032": {
+          "id": "51990237032",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1778111333081,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:48:53.081Z"
+        },
+        "51913940860": {
+          "id": "51913940860",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1778111608641,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:53:28.641Z"
+        },
+        "51900019654": {
+          "id": "51900019654",
+          "xp": 42,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 7,
+          "commands": 0,
+          "lastMessageXpAt": 1778111990951,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:59:50.951Z"
+        },
+        "51935236874": {
+          "id": "51935236874",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1778112021003,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-07T00:00:21.003Z"
+        },
+        "51926405633": {
+          "id": "51926405633",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1778111676356,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:54:36.356Z"
+        },
+        "51948365286": {
+          "id": "51948365286",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1778111771234,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:56:11.234Z"
+        },
+        "51908519951": {
+          "id": "51908519951",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1778111805330,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:56:45.330Z"
+        },
+        "51916768441": {
+          "id": "51916768441",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1778111859382,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-06T23:57:39.382Z"
+        },
+        "51964341928": {
+          "id": "51964341928",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1778112003195,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-05-07T00:00:03.195Z"
+        }
+      },
+      "updatedAt": "2026-05-07T00:00:21.003Z"
+    },
+    "120363427900850352@g.us": {
+      "enabled": false,
+      "users": {
+        "573223090406": {
+          "id": "573223090406",
+          "xp": 36,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 4,
+          "commands": 1,
+          "lastMessageXpAt": 1784532259293,
+          "lastCommandXpAt": 1784531991990,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T07:24:19.293Z"
+        },
+        "204148502954022": {
+          "id": "204148502954022",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784531970309,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T07:19:30.309Z"
+        },
+        "5217732654942": {
+          "id": "5217732654942",
+          "xp": 42,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 2,
+          "lastMessageXpAt": 1784532245693,
+          "lastCommandXpAt": 1784532267509,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T07:24:27.509Z"
+        },
+        "15818120070": {
+          "id": "15818120070",
+          "xp": 54,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 5,
+          "commands": 2,
+          "lastMessageXpAt": 1784532209976,
+          "lastCommandXpAt": 1784532088026,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T07:23:29.976Z"
+        },
+        "5215662708347": {
+          "id": "5215662708347",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784532245926,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T07:24:05.926Z"
+        },
+        "5218444966582": {
+          "id": "5218444966582",
+          "xp": 0,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 0,
+          "commands": 0,
+          "lastMessageXpAt": 0,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T20:30:38.574Z"
+        }
+      },
+      "updatedAt": "2026-07-20T07:24:27.511Z"
+    },
+    "120363425691233337@g.us": {
+      "enabled": true,
+      "users": {
+        "5218444966582": {
+          "id": "5218444966582",
+          "xp": 168,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 8,
+          "commands": 10,
+          "lastMessageXpAt": 1784568956759,
+          "lastCommandXpAt": 1784568570613,
+          "lastLevelUpAt": 1784568190089,
+          "updatedAt": "2026-07-20T17:35:56.759Z"
+        },
+        "573223090406": {
+          "id": "573223090406",
+          "xp": 102,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 5,
+          "commands": 6,
+          "lastMessageXpAt": 1784535115084,
+          "lastCommandXpAt": 1784535271023,
+          "lastLevelUpAt": 1784535271023,
+          "updatedAt": "2026-07-20T08:14:31.023Z"
+        },
+        "204148502954022": {
+          "id": "204148502954022",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784532172602,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T07:22:52.602Z"
+        },
+        "573225396540": {
+          "id": "573225396540",
+          "xp": 30,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 5,
+          "commands": 0,
+          "lastMessageXpAt": 1784568740948,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T17:32:20.948Z"
+        }
+      },
+      "updatedAt": "2026-07-20T17:35:56.759Z"
+    },
+    "120363318812912564@g.us": {
+      "enabled": true,
+      "users": {
+        "5217775517080": {
+          "id": "5217775517080",
+          "xp": 150,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 25,
+          "commands": 0,
+          "lastMessageXpAt": 1784597500107,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 1784573340968,
+          "updatedAt": "2026-07-21T01:31:40.107Z"
+        },
+        "5356794644": {
+          "id": "5356794644",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784550032038,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:20:32.038Z"
+        },
+        "5215664056495": {
+          "id": "5215664056495",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784563501588,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T16:05:01.588Z"
+        },
+        "5493884880474": {
+          "id": "5493884880474",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784570697055,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T18:04:57.055Z"
+        },
+        "5218444966582": {
+          "id": "5218444966582",
+          "xp": 132,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 18,
+          "commands": 2,
+          "lastMessageXpAt": 1784597464864,
+          "lastCommandXpAt": 1784573811096,
+          "lastLevelUpAt": 1784574684838,
+          "updatedAt": "2026-07-21T01:31:04.864Z"
+        },
+        "51997274703": {
+          "id": "51997274703",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784578070120,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T20:07:50.120Z"
+        },
+        "17795291955": {
+          "id": "17795291955",
+          "xp": 30,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 5,
+          "commands": 0,
+          "lastMessageXpAt": 1784600789428,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T02:26:29.428Z"
+        },
+        "51918052979": {
+          "id": "51918052979",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784590273596,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T23:31:13.596Z"
+        },
+        "51901628870": {
+          "id": "51901628870",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784590455276,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T23:34:15.276Z"
+        },
+        "5215641325554": {
+          "id": "5215641325554",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784592074828,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T00:01:14.828Z"
+        },
+        "5212371131203": {
+          "id": "5212371131203",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784601390227,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T02:36:30.227Z"
+        },
+        "5212271530148": {
+          "id": "5212271530148",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1784598310534,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:45:10.534Z"
+        },
+        "595994179512": {
+          "id": "595994179512",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784600792544,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T02:26:32.544Z"
+        },
+        "5491144089342": {
+          "id": "5491144089342",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784617886377,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T07:11:26.377Z"
+        }
+      },
+      "updatedAt": "2026-07-21T07:11:26.377Z"
+    },
+    "120363422639257869@g.us": {
+      "enabled": true,
+      "users": {
+        "5217775517080": {
+          "id": "5217775517080",
+          "xp": 36,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 6,
+          "commands": 0,
+          "lastMessageXpAt": 1784578264387,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T20:11:04.387Z"
+        },
+        "51932446624": {
+          "id": "51932446624",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1784558875625,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T14:47:55.625Z"
+        },
+        "5215523964022": {
+          "id": "5215523964022",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784590939305,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T23:42:19.305Z"
+        },
+        "5217551384561": {
+          "id": "5217551384561",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784561819475,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T15:36:59.475Z"
+        },
+        "593983897043": {
+          "id": "593983897043",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784570222837,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T17:57:02.837Z"
+        },
+        "51930257333": {
+          "id": "51930257333",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784578561487,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T20:16:01.487Z"
+        },
+        "573224515523": {
+          "id": "573224515523",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784579140387,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T20:25:40.387Z"
+        },
+        "17795291955": {
+          "id": "17795291955",
+          "xp": 48,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 6,
+          "commands": 1,
+          "lastMessageXpAt": 1784595328407,
+          "lastCommandXpAt": 1784590822094,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T00:55:28.407Z"
+        },
+        "5215574125928": {
+          "id": "5215574125928",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784587788551,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T22:49:48.551Z"
+        },
+        "5218331548312": {
+          "id": "5218331548312",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784587846497,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T22:50:46.497Z"
+        },
+        "5212481224104": {
+          "id": "5212481224104",
+          "xp": 24,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 4,
+          "commands": 0,
+          "lastMessageXpAt": 1784590632542,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T23:37:12.542Z"
+        },
+        "5218231094708": {
+          "id": "5218231094708",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784591058171,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T23:44:18.171Z"
+        },
+        "51931793855": {
+          "id": "51931793855",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784591169879,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T23:46:09.879Z"
+        },
+        "50245177157": {
+          "id": "50245177157",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784592520536,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T00:08:40.536Z"
+        },
+        "5351916980": {
+          "id": "5351916980",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784596013556,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:06:53.556Z"
+        },
+        "5491144729904": {
+          "id": "5491144729904",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784596433453,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:13:53.453Z"
+        }
+      },
+      "updatedAt": "2026-07-21T01:13:53.453Z"
+    },
+    "120363420217311359@g.us": {
+      "enabled": true,
+      "users": {
+        "5217775517080": {
+          "id": "5217775517080",
+          "xp": 198,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 33,
+          "commands": 0,
+          "lastMessageXpAt": 1784618607793,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 1784612337779,
+          "updatedAt": "2026-07-21T07:23:27.793Z"
+        },
+        "573202254179": {
+          "id": "573202254179",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784552201280,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:56:41.280Z"
+        },
+        "5214443349408": {
+          "id": "5214443349408",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784556952179,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T14:15:52.179Z"
+        },
+        "5215529270563": {
+          "id": "5215529270563",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784600891521,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T02:28:11.521Z"
+        },
+        "5493884880474": {
+          "id": "5493884880474",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784570770680,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T18:06:10.680Z"
+        },
+        "593981149311": {
+          "id": "593981149311",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1784585390780,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T22:09:50.780Z"
+        },
+        "59169311700": {
+          "id": "59169311700",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784587996866,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T22:53:16.866Z"
+        },
+        "17795291955": {
+          "id": "17795291955",
+          "xp": 30,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 5,
+          "commands": 0,
+          "lastMessageXpAt": 1784612498801,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T05:41:38.801Z"
+        },
+        "393293843160": {
+          "id": "393293843160",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1784601644281,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T02:40:44.281Z"
+        },
+        "51907568206": {
+          "id": "51907568206",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784606516633,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T04:01:56.633Z"
+        },
+        "5218444966582": {
+          "id": "5218444966582",
+          "xp": 132,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 8,
+          "commands": 7,
+          "lastMessageXpAt": 1784616265615,
+          "lastCommandXpAt": 1784616339276,
+          "lastLevelUpAt": 1784616056812,
+          "updatedAt": "2026-07-21T06:45:39.276Z"
+        }
+      },
+      "updatedAt": "2026-07-21T07:23:27.793Z"
+    },
+    "120363421761831960@g.us": {
+      "enabled": true,
+      "users": {
+        "6285111235331": {
+          "id": "6285111235331",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784536732624,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T08:38:52.624Z"
+        },
+        "6282250984992": {
+          "id": "6282250984992",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784536756464,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T08:39:16.464Z"
+        },
+        "6285645258349": {
+          "id": "6285645258349",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784536803010,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T08:40:03.010Z"
+        },
+        "120363421761831960": {
+          "id": "120363421761831960",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784537378279,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T08:49:38.279Z"
+        }
+      },
+      "updatedAt": "2026-07-20T08:49:38.279Z"
+    },
+    "120363409540749189@g.us": {
+      "enabled": true,
+      "users": {
+        "5218444966582": {
+          "id": "5218444966582",
+          "xp": 768,
+          "level": 5,
+          "role": "Activo",
+          "messages": 12,
+          "commands": 58,
+          "lastMessageXpAt": 1784610376039,
+          "lastCommandXpAt": 1784615062334,
+          "lastLevelUpAt": 1784615062334,
+          "updatedAt": "2026-07-21T06:24:22.334Z"
+        }
+      },
+      "updatedAt": "2026-07-21T06:24:22.334Z"
+    },
+    "120363430432308540@g.us": {
+      "enabled": true,
+      "users": {
+        "6285111235331": {
+          "id": "6285111235331",
+          "xp": 78,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 13,
+          "commands": 0,
+          "lastMessageXpAt": 1784541956497,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:05:56.497Z"
+        },
+        "6285189712417": {
+          "id": "6285189712417",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541612021,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:00:12.021Z"
+        },
+        "6282191035625": {
+          "id": "6282191035625",
+          "xp": 24,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 1,
+          "lastMessageXpAt": 1784541939110,
+          "lastCommandXpAt": 1784541629046,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:05:39.110Z"
+        },
+        "6285129675566": {
+          "id": "6285129675566",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784541827036,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:03:47.036Z"
+        },
+        "6289526176650": {
+          "id": "6289526176650",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541639602,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:00:39.602Z"
+        },
+        "94765901096": {
+          "id": "94765901096",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784541842357,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:04:02.357Z"
+        },
+        "6287767556078": {
+          "id": "6287767556078",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541640259,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:00:40.259Z"
+        },
+        "6283844564010": {
+          "id": "6283844564010",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784541849356,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:04:09.356Z"
+        },
+        "62881011178279": {
+          "id": "62881011178279",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541732440,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:02:12.440Z"
+        },
+        "6282250984992": {
+          "id": "6282250984992",
+          "xp": 30,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 5,
+          "commands": 0,
+          "lastMessageXpAt": 1784541951763,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:05:51.763Z"
+        },
+        "254114042838": {
+          "id": "254114042838",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541827604,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:03:47.604Z"
+        },
+        "254785109317": {
+          "id": "254785109317",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541831521,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:03:51.521Z"
+        },
+        "6285640838473": {
+          "id": "6285640838473",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 0,
+          "commands": 1,
+          "lastMessageXpAt": 0,
+          "lastCommandXpAt": 1784541837227,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:03:57.227Z"
+        },
+        "6285801699834": {
+          "id": "6285801699834",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541842259,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:04:02.259Z"
+        },
+        "32238578180217": {
+          "id": "32238578180217",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541842828,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:04:02.828Z"
+        },
+        "6281340603737": {
+          "id": "6281340603737",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541902007,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:05:02.007Z"
+        },
+        "6287846514556": {
+          "id": "6287846514556",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541913682,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:05:13.682Z"
+        },
+        "6282282693817": {
+          "id": "6282282693817",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784541945959,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:05:45.959Z"
+        },
+        "6285285811517": {
+          "id": "6285285811517",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784542054350,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T10:07:34.350Z"
+        }
+      },
+      "updatedAt": "2026-07-20T10:07:34.350Z"
+    },
+    "120363408730722855@g.us": {
+      "enabled": true,
+      "users": {},
+      "updatedAt": "2026-07-20T10:29:36.846Z"
+    },
+    "120363407004393014@g.us": {
+      "enabled": true,
+      "users": {
+        "6283173874107": {
+          "id": "6283173874107",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1784548869765,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:01:09.765Z"
+        },
+        "6282250984992": {
+          "id": "6282250984992",
+          "xp": 18,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 3,
+          "commands": 0,
+          "lastMessageXpAt": 1784548988418,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:03:08.418Z"
+        },
+        "6285111235331": {
+          "id": "6285111235331",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784548984453,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:03:04.453Z"
+        },
+        "60139100166": {
+          "id": "60139100166",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784549031517,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:03:51.517Z"
+        },
+        "263776321847": {
+          "id": "263776321847",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784549037783,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T12:03:57.783Z"
+        }
+      },
+      "updatedAt": "2026-07-20T12:03:57.783Z"
+    },
+    "120363429319272295@g.us": {
+      "enabled": true,
+      "users": {},
+      "updatedAt": "2026-07-20T11:39:57.088Z"
+    },
+    "120363408817915761@g.us": {
+      "enabled": true,
+      "users": {},
+      "updatedAt": "2026-07-20T13:04:42.459Z"
+    },
+    "120363409448321565@g.us": {
+      "enabled": true,
+      "users": {
+        "6285111235331": {
+          "id": "6285111235331",
+          "xp": 114,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 19,
+          "commands": 0,
+          "lastMessageXpAt": 1784555259311,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 1784555086891,
+          "updatedAt": "2026-07-20T13:47:39.311Z"
+        },
+        "6288279441865": {
+          "id": "6288279441865",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784554513230,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T13:35:13.230Z"
+        },
+        "6287745525110": {
+          "id": "6287745525110",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784555860241,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T13:57:40.241Z"
+        },
+        "628895539056": {
+          "id": "628895539056",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784555542966,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T13:52:22.966Z"
+        },
+        "6283840450902": {
+          "id": "6283840450902",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784555751338,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T13:55:51.338Z"
+        },
+        "6282250984992": {
+          "id": "6282250984992",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784556446907,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T14:07:26.907Z"
+        },
+        "6283199105541": {
+          "id": "6283199105541",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784556418177,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T14:06:58.177Z"
+        },
+        "6282363478031": {
+          "id": "6282363478031",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784556434244,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T14:07:14.244Z"
+        },
+        "6282363427470": {
+          "id": "6282363427470",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784556434442,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T14:07:14.442Z"
+        }
+      },
+      "updatedAt": "2026-07-20T14:07:26.907Z"
+    },
+    "120363373392540171@g.us": {
+      "enabled": true,
+      "users": {},
+      "updatedAt": "2026-07-20T14:08:39.941Z"
+    },
+    "120363428227942634@g.us": {
+      "enabled": true,
+      "users": {
+        "6285111235331": {
+          "id": "6285111235331",
+          "xp": 186,
+          "level": 2,
+          "role": "Recluta",
+          "messages": 31,
+          "commands": 0,
+          "lastMessageXpAt": 1784586224598,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 1784566215525,
+          "updatedAt": "2026-07-20T22:23:44.598Z"
+        },
+        "6289509518242": {
+          "id": "6289509518242",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784564175552,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T16:16:15.552Z"
+        },
+        "62895616813957": {
+          "id": "62895616813957",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784564357859,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T16:19:17.859Z"
+        },
+        "6283192552555": {
+          "id": "6283192552555",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784564697400,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T16:24:57.400Z"
+        },
+        "923333261685": {
+          "id": "923333261685",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784569280740,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T17:41:20.740Z"
+        },
+        "6282191035625": {
+          "id": "6282191035625",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784579631344,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-20T20:33:51.344Z"
+        }
+      },
+      "updatedAt": "2026-07-20T22:23:44.598Z"
+    },
+    "120363427188636330@g.us": {
+      "enabled": true,
+      "users": {
+        "573225814649": {
+          "id": "573225814649",
+          "xp": 36,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 6,
+          "commands": 0,
+          "lastMessageXpAt": 1784618663706,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T07:24:23.706Z"
+        }
+      },
+      "updatedAt": "2026-07-21T07:24:23.706Z"
+    },
+    "120363403286921623@g.us": {
+      "enabled": true,
+      "users": {
+        "6289673566299": {
+          "id": "6289673566299",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784595445330,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T00:57:25.330Z"
+        },
+        "6285111235331": {
+          "id": "6285111235331",
+          "xp": 42,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 7,
+          "commands": 0,
+          "lastMessageXpAt": 1784595732406,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:02:12.406Z"
+        },
+        "6281244746923": {
+          "id": "6281244746923",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784595768922,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:02:48.922Z"
+        },
+        "120363403286921623": {
+          "id": "120363403286921623",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784595968158,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:06:08.158Z"
+        },
+        "6283178929520": {
+          "id": "6283178929520",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784596023049,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:07:03.049Z"
+        },
+        "6285215588207": {
+          "id": "6285215588207",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784595990154,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:06:30.154Z"
+        },
+        "62882005014022": {
+          "id": "62882005014022",
+          "xp": 12,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 2,
+          "commands": 0,
+          "lastMessageXpAt": 1784596054744,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:07:34.744Z"
+        },
+        "6283124569041": {
+          "id": "6283124569041",
+          "xp": 6,
+          "level": 1,
+          "role": "Recluta",
+          "messages": 1,
+          "commands": 0,
+          "lastMessageXpAt": 1784596090638,
+          "lastCommandXpAt": 0,
+          "lastLevelUpAt": 0,
+          "updatedAt": "2026-07-21T01:08:10.638Z"
+        }
+      },
+      "updatedAt": "2026-07-21T01:08:10.638Z"
+    }
+  },
+  "globalUsers": {
+    "51907376960": {
+      "id": "51907376960",
+      "xp": 24,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 0,
+      "commands": 2,
+      "updatedAt": "2026-05-06T23:45:59.266Z"
+    },
+    "51990237032": {
+      "id": "51990237032",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:48:53.082Z"
+    },
+    "51913940860": {
+      "id": "51913940860",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:53:28.642Z"
+    },
+    "51900019654": {
+      "id": "51900019654",
+      "xp": 42,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 7,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:59:50.951Z"
+    },
+    "51935236874": {
+      "id": "51935236874",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-05-07T00:00:21.003Z"
+    },
+    "51926405633": {
+      "id": "51926405633",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:54:36.357Z"
+    },
+    "51948365286": {
+      "id": "51948365286",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:56:11.235Z"
+    },
+    "51908519951": {
+      "id": "51908519951",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:56:45.330Z"
+    },
+    "51916768441": {
+      "id": "51916768441",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-05-06T23:57:39.382Z"
+    },
+    "51964341928": {
+      "id": "51964341928",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-05-07T00:00:03.195Z"
+    },
+    "573223090406": {
+      "id": "573223090406",
+      "xp": 138,
+      "level": 2,
+      "role": "Recluta",
+      "messages": 9,
+      "commands": 7,
+      "updatedAt": "2026-07-20T08:14:31.023Z"
+    },
+    "204148502954022": {
+      "id": "204148502954022",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T07:22:52.602Z"
+    },
+    "5217732654942": {
+      "id": "5217732654942",
+      "xp": 42,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 2,
+      "updatedAt": "2026-07-20T07:24:27.509Z"
+    },
+    "15818120070": {
+      "id": "15818120070",
+      "xp": 54,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 5,
+      "commands": 2,
+      "updatedAt": "2026-07-20T07:23:29.976Z"
+    },
+    "5218444966582": {
+      "id": "5218444966582",
+      "xp": 1200,
+      "level": 6,
+      "role": "Activo",
+      "messages": 46,
+      "commands": 77,
+      "updatedAt": "2026-07-21T06:45:39.276Z"
+    },
+    "5215662708347": {
+      "id": "5215662708347",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T07:24:05.926Z"
+    },
+    "5217775517080": {
+      "id": "5217775517080",
+      "xp": 384,
+      "level": 3,
+      "role": "Recluta",
+      "messages": 64,
+      "commands": 0,
+      "updatedAt": "2026-07-21T07:23:27.793Z"
+    },
+    "6285111235331": {
+      "id": "6285111235331",
+      "xp": 438,
+      "level": 3,
+      "role": "Recluta",
+      "messages": 73,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:02:12.406Z"
+    },
+    "6282250984992": {
+      "id": "6282250984992",
+      "xp": 66,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 11,
+      "commands": 0,
+      "updatedAt": "2026-07-20T14:07:26.907Z"
+    },
+    "6285645258349": {
+      "id": "6285645258349",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T08:40:03.010Z"
+    },
+    "120363421761831960": {
+      "id": "120363421761831960",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T08:49:38.279Z"
+    },
+    "6285189712417": {
+      "id": "6285189712417",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:00:12.021Z"
+    },
+    "6282191035625": {
+      "id": "6282191035625",
+      "xp": 30,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 1,
+      "updatedAt": "2026-07-20T20:33:51.344Z"
+    },
+    "6285129675566": {
+      "id": "6285129675566",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:03:47.036Z"
+    },
+    "6289526176650": {
+      "id": "6289526176650",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:00:39.602Z"
+    },
+    "94765901096": {
+      "id": "94765901096",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:04:02.357Z"
+    },
+    "6287767556078": {
+      "id": "6287767556078",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:00:40.259Z"
+    },
+    "6283844564010": {
+      "id": "6283844564010",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:04:09.356Z"
+    },
+    "62881011178279": {
+      "id": "62881011178279",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:02:12.440Z"
+    },
+    "254114042838": {
+      "id": "254114042838",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:03:47.604Z"
+    },
+    "254785109317": {
+      "id": "254785109317",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:03:51.521Z"
+    },
+    "6285640838473": {
+      "id": "6285640838473",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 0,
+      "commands": 1,
+      "updatedAt": "2026-07-20T10:03:57.227Z"
+    },
+    "6285801699834": {
+      "id": "6285801699834",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:04:02.259Z"
+    },
+    "32238578180217": {
+      "id": "32238578180217",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:04:02.828Z"
+    },
+    "6281340603737": {
+      "id": "6281340603737",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:05:02.007Z"
+    },
+    "6287846514556": {
+      "id": "6287846514556",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:05:13.682Z"
+    },
+    "6282282693817": {
+      "id": "6282282693817",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:05:45.959Z"
+    },
+    "6285285811517": {
+      "id": "6285285811517",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T10:07:34.350Z"
+    },
+    "6283173874107": {
+      "id": "6283173874107",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-07-20T12:01:09.766Z"
+    },
+    "60139100166": {
+      "id": "60139100166",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T12:03:51.517Z"
+    },
+    "263776321847": {
+      "id": "263776321847",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T12:03:57.783Z"
+    },
+    "5356794644": {
+      "id": "5356794644",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T12:20:32.038Z"
+    },
+    "573202254179": {
+      "id": "573202254179",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T12:56:41.280Z"
+    },
+    "6288279441865": {
+      "id": "6288279441865",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T13:35:13.230Z"
+    },
+    "6287745525110": {
+      "id": "6287745525110",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T13:57:40.241Z"
+    },
+    "628895539056": {
+      "id": "628895539056",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T13:52:22.966Z"
+    },
+    "6283840450902": {
+      "id": "6283840450902",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T13:55:51.338Z"
+    },
+    "6283199105541": {
+      "id": "6283199105541",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T14:06:58.177Z"
+    },
+    "6282363478031": {
+      "id": "6282363478031",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T14:07:14.244Z"
+    },
+    "6282363427470": {
+      "id": "6282363427470",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T14:07:14.442Z"
+    },
+    "5214443349408": {
+      "id": "5214443349408",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T14:15:52.179Z"
+    },
+    "51932446624": {
+      "id": "51932446624",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-07-20T14:47:55.625Z"
+    },
+    "5215523964022": {
+      "id": "5215523964022",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T23:42:19.305Z"
+    },
+    "5217551384561": {
+      "id": "5217551384561",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T15:36:59.475Z"
+    },
+    "5215664056495": {
+      "id": "5215664056495",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T16:05:01.588Z"
+    },
+    "6289509518242": {
+      "id": "6289509518242",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T16:16:15.552Z"
+    },
+    "62895616813957": {
+      "id": "62895616813957",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T16:19:17.859Z"
+    },
+    "6283192552555": {
+      "id": "6283192552555",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T16:24:57.400Z"
+    },
+    "5215529270563": {
+      "id": "5215529270563",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-21T02:28:11.521Z"
+    },
+    "573225814649": {
+      "id": "573225814649",
+      "xp": 36,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 6,
+      "commands": 0,
+      "updatedAt": "2026-07-21T07:24:23.706Z"
+    },
+    "573225396540": {
+      "id": "573225396540",
+      "xp": 30,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 5,
+      "commands": 0,
+      "updatedAt": "2026-07-20T17:32:20.949Z"
+    },
+    "923333261685": {
+      "id": "923333261685",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T17:41:20.740Z"
+    },
+    "593983897043": {
+      "id": "593983897043",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T17:57:02.837Z"
+    },
+    "5493884880474": {
+      "id": "5493884880474",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T18:06:10.680Z"
+    },
+    "51997274703": {
+      "id": "51997274703",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T20:07:50.120Z"
+    },
+    "51930257333": {
+      "id": "51930257333",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T20:16:01.487Z"
+    },
+    "573224515523": {
+      "id": "573224515523",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T20:25:40.387Z"
+    },
+    "593981149311": {
+      "id": "593981149311",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-07-20T22:09:50.781Z"
+    },
+    "17795291955": {
+      "id": "17795291955",
+      "xp": 108,
+      "level": 2,
+      "role": "Recluta",
+      "messages": 16,
+      "commands": 1,
+      "updatedAt": "2026-07-21T05:41:38.801Z"
+    },
+    "59169311700": {
+      "id": "59169311700",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T22:53:16.867Z"
+    },
+    "5215574125928": {
+      "id": "5215574125928",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T22:49:48.551Z"
+    },
+    "5218331548312": {
+      "id": "5218331548312",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T22:50:46.497Z"
+    },
+    "5212481224104": {
+      "id": "5212481224104",
+      "xp": 24,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 4,
+      "commands": 0,
+      "updatedAt": "2026-07-20T23:37:12.542Z"
+    },
+    "51918052979": {
+      "id": "51918052979",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T23:31:13.596Z"
+    },
+    "51901628870": {
+      "id": "51901628870",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T23:34:15.276Z"
+    },
+    "5218231094708": {
+      "id": "5218231094708",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-20T23:44:18.171Z"
+    },
+    "51931793855": {
+      "id": "51931793855",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-20T23:46:09.879Z"
+    },
+    "5215641325554": {
+      "id": "5215641325554",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T00:01:14.828Z"
+    },
+    "50245177157": {
+      "id": "50245177157",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T00:08:40.536Z"
+    },
+    "6289673566299": {
+      "id": "6289673566299",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-21T00:57:25.330Z"
+    },
+    "6281244746923": {
+      "id": "6281244746923",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:02:48.922Z"
+    },
+    "120363403286921623": {
+      "id": "120363403286921623",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:06:08.158Z"
+    },
+    "6283178929520": {
+      "id": "6283178929520",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:07:03.049Z"
+    },
+    "6285215588207": {
+      "id": "6285215588207",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:06:30.154Z"
+    },
+    "62882005014022": {
+      "id": "62882005014022",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:07:34.744Z"
+    },
+    "5351916980": {
+      "id": "5351916980",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:06:53.556Z"
+    },
+    "6283124569041": {
+      "id": "6283124569041",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:08:10.638Z"
+    },
+    "5491144729904": {
+      "id": "5491144729904",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:13:53.453Z"
+    },
+    "5212371131203": {
+      "id": "5212371131203",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-21T02:36:30.228Z"
+    },
+    "5212271530148": {
+      "id": "5212271530148",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-07-21T01:45:10.534Z"
+    },
+    "595994179512": {
+      "id": "595994179512",
+      "xp": 12,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 2,
+      "commands": 0,
+      "updatedAt": "2026-07-21T02:26:32.544Z"
+    },
+    "393293843160": {
+      "id": "393293843160",
+      "xp": 18,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 3,
+      "commands": 0,
+      "updatedAt": "2026-07-21T02:40:44.281Z"
+    },
+    "51907568206": {
+      "id": "51907568206",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T04:01:56.633Z"
+    },
+    "5491144089342": {
+      "id": "5491144089342",
+      "xp": 6,
+      "level": 1,
+      "role": "Recluta",
+      "messages": 1,
+      "commands": 0,
+      "updatedAt": "2026-07-21T07:11:26.377Z"
+    }
+  }
+}

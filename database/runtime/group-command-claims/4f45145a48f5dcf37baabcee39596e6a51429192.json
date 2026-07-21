@@ -1,0 +1,13 @@
+{
+  "claimedAt": 1784663461138,
+  "claimKey": "message|120363425691233337@g.us|a5da807290040b3e8810b5d60db43523",
+  "chatId": "120363425691233337@g.us",
+  "messageId": "A5DA807290040B3E8810B5D60DB43523",
+  "messageTimestampMs": 1784663460000,
+  "sender": "573225396540",
+  "command": "menu",
+  "botId": "main",
+  "slot": 0,
+  "priority": 0,
+  "processPid": 83545
+}

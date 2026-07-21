@@ -13,7 +13,7 @@ const API_MEDIAFIRE_URL = `${API_BASE}/mediafire`;
 
 const COOLDOWN_TIME = 0;
 const REQUEST_TIMEOUT = 120000;
-const MAX_FILE_BYTES = 1024 * 1024 * 1024;
+const MAX_FILE_BYTES = 2 * 1024 * 1024 * 1024;
 
 const TMP_DIR = path.join(os.tmpdir(), "dvyer-mediafire");
 

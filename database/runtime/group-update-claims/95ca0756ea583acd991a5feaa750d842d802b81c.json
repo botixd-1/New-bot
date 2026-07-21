@@ -1,0 +1,13 @@
+{
+  "claimedAt": 1784664330326,
+  "claimKey": "group_update|120363318812912564@g.us|add|2921081127022",
+  "botId": "main",
+  "processPid": 83545,
+  "update": {
+    "id": "120363318812912564@g.us",
+    "action": "add",
+    "participants": [
+      "2921081127022@lid"
+    ]
+  }
+}
