@@ -13,7 +13,6 @@ const EVOGB_FILTERS_URL = "https://api.evogb.org/generate/filters";
 const EVOGB_UPLOAD_URL = "https://evogb.win/api/upload";
 
 // ── Alias del comando -> nombre real del filtro en la API ──
-// Para agregar un filtro nuevo, solo añade una línea aquí.
 const FILTER_ALIASES = {
   blur: "blur",
   pixelate: "pixelate",
@@ -29,6 +28,32 @@ const FILTER_ALIASES = {
   invertir: "invert",
   sepia: "sepia",
 };
+
+// ── Descripción individual por filtro, para el menu ──
+const FILTER_DESCRIPTIONS = {
+  blur: "Desenfoca la imagen",
+  pixelate: "Pixela la imagen",
+  gay: "Aplica un filtro arcoíris a la imagen",
+  glitch: "Aplica un efecto glitch a la imagen",
+  wave: "Aplica un efecto de ondas a la imagen",
+  sticker: "Convierte la imagen en un sticker con filtro",
+  greyscale: "Convierte la imagen a escala de grises",
+  invert: "Invierte los colores de la imagen",
+  sepia: "Aplica un filtro sepia a la imagen",
+};
+
+const ALIASES_BY_FILTER = Object.entries(FILTER_ALIASES).reduce((acc, [alias, filter]) => {
+  if (!acc[filter]) acc[filter] = [];
+  acc[filter].push(alias);
+  return acc;
+}, {});
+
+const MENU_ENTRIES = Object.keys(ALIASES_BY_FILTER).map((filter) => ({
+  name: ALIASES_BY_FILTER[filter][0],
+  description: FILTER_DESCRIPTIONS[filter] || "Aplica un filtro a una imagen",
+  aliases: ALIASES_BY_FILTER[filter].slice(1),
+  access: "PUBLICO",
+}));
 
 function ensureTmp() {
   if (!fs.existsSync(TMP_DIR)) fs.mkdirSync(TMP_DIR, { recursive: true });
@@ -60,7 +85,6 @@ function deleteFileSafe(fp) {
   } catch {}
 }
 
-// ── Sube el buffer al CDN de Evogb para obtener una URL pública ──
 async function uploadToEvogbCdn(buffer, fileName) {
   const form = new FormData();
   form.append("file", buffer, { filename: fileName });
@@ -81,7 +105,6 @@ async function uploadToEvogbCdn(buffer, fileName) {
   return data.url;
 }
 
-// ── Pide la imagen filtrada a la API de Evogb ──
 async function requestFilteredImage(imageUrl, filterName) {
   const response = await axios.get(EVOGB_FILTERS_URL, {
     params: {
@@ -116,8 +139,9 @@ async function requestFilteredImage(imageUrl, filterName) {
 
 export default {
   command: ["filtros", ...Object.keys(FILTER_ALIASES)],
-  category: "media",
+  category: "filtros",
   description: "Aplica un filtro (blur, pixelate, gay, glitch, wave, sticker, gris, invertir, sepia) a una imagen",
+  menuEntries: MENU_ENTRIES,
 
   run: async ({ sock, msg, from, commandName }) => {
     let tempInPath = null;

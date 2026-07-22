@@ -9,7 +9,6 @@ const EVOGB_KEY = "DravenMJ";
 const TMP_DIR = path.join(process.cwd(), "tmp", "interact-gifs");
 
 // ── Alias en español/inglés -> acción real que acepta la API ──
-// Para agregar una acción nueva, solo añade una línea aquí.
 const ACTION_MAP = {
   abrazar: "hug", abrazo: "hug", hug: "hug",
   kiss: "kiss", beso: "kiss", besar: "kiss",
@@ -53,6 +52,64 @@ const ACTION_MAP = {
   fumar: "smoke", smoke: "smoke",
 };
 
+// ── Descripción individual por acción, para que el menu muestre cada una por separado ──
+const ACTION_DESCRIPTIONS = {
+  hug: "Abraza a alguien",
+  kiss: "Le da un beso a alguien",
+  kill: "Elimina (en broma) a alguien",
+  punch: "Le da un puñetazo a alguien",
+  slap: "Le da una bofetada a alguien",
+  handhold: "Toma de la mano a alguien",
+  pat: "Le da una palmadita a alguien",
+  bonk: "Manda a alguien al horny jail",
+  bite: "Muerde a alguien",
+  lick: "Lame a alguien",
+  cuddle: "Se acurruca con alguien",
+  highfive: "Choca los cinco con alguien",
+  cry: "Llora",
+  blush: "Se ruboriza",
+  dance: "Baila",
+  wink: "Guiña el ojo",
+  wave: "Saluda con la mano",
+  happy: "Se siente feliz",
+  smug: "Presume con orgullo",
+  cringe: "Siente cringe",
+  smile: "Sonríe",
+  eat: "Come algo",
+  bath: "Se baña",
+  sleep: "Duerme",
+  sing: "Canta",
+  run: "Corre",
+  seduce: "Intenta seducir",
+  love: "Muestra amor",
+  sad: "Se siente triste",
+  scared: "Se siente asustado",
+  shy: "Se siente tímido",
+  clap: "Aplaude",
+  coffee: "Toma un café",
+  scream: "Grita",
+  push: "Empuja a alguien",
+  jump: "Salta",
+  bully: "Molesta a alguien",
+  think: "Piensa",
+  walk: "Camina",
+  smoke: "Fuma",
+};
+
+// ── Alias de WhatsApp por acción, para mostrar en cada entrada del menú ──
+const ALIASES_BY_ACTION = Object.entries(ACTION_MAP).reduce((acc, [alias, action]) => {
+  if (!acc[action]) acc[action] = [];
+  acc[action].push(alias);
+  return acc;
+}, {});
+
+const MENU_ENTRIES = Object.keys(ALIASES_BY_ACTION).map((action) => ({
+  name: ALIASES_BY_ACTION[action][0],
+  description: ACTION_DESCRIPTIONS[action] || "Envía un gif de interacción",
+  aliases: ALIASES_BY_ACTION[action].slice(1),
+  access: "PUBLICO",
+}));
+
 function ensureTmp() {
   if (!fs.existsSync(TMP_DIR)) fs.mkdirSync(TMP_DIR, { recursive: true });
 }
@@ -63,7 +120,6 @@ function deleteFileSafe(fp) {
   } catch {}
 }
 
-// ── Pide a la API la URL del mp4 para una acción ──
 async function fetchGifUrl(action) {
   const { data } = await axios.get(EVOGB_BASE, {
     params: { type: action, key: EVOGB_KEY },
@@ -77,7 +133,6 @@ async function fetchGifUrl(action) {
   return data.result;
 }
 
-// ── Descarga el mp4 a disco ──
 async function downloadMp4(url, destPath) {
   const response = await axios.get(url, {
     responseType: "stream",
@@ -92,7 +147,6 @@ async function downloadMp4(url, destPath) {
   }
 }
 
-// ── Encuentra a quién va dirigida la acción (mención o cita) ──
 function resolveTargetJid(msg) {
   const ctxInfo = msg.message?.extendedTextMessage?.contextInfo;
   const mentioned = ctxInfo?.mentionedJid;
@@ -110,8 +164,9 @@ function jidToMentionText(jid) {
 
 export default {
   command: ["interacciones", ...Object.keys(ACTION_MAP)],
-  category: "media",
+  category: "interacciones",
   description: "Envía un gif de interacción (abrazar, besar, golpear, etc.)",
+  menuEntries: MENU_ENTRIES,
 
   run: async ({ sock, msg, from, commandName }) => {
     let mp4Path = null;
