@@ -56,7 +56,7 @@ function buildStaffCaption({
 
   return [
     "╔════════════════════════════════════════════╗",
-    `║          ☠️ ${stylizeWord("FSOCIETY")} ${stylizeSignature("staff bot")}          ║`,
+    `║          ☠️ ${stylizeWord("JM")} ${stylizeSignature("staff bot")}          ║`,
     "╠════════════════════════════════════════════╣",
     `║ 👑 Dueño principal: *${ownerName}*`,
     primaryOwner

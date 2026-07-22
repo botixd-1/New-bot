@@ -14,7 +14,7 @@ function getPrefix(settings) {
 function buildFallbackText(prefix) {
   return (
     `╔════════════════════════════╗\n` +
-    `║ ${stylizeWord("FSOCIETY-V1")} ${stylizeSignature("group menu")} ║\n` +
+    `║ ${stylizeWord("JM BOT")} ${stylizeSignature("group menu")} ║\n` +
     `╚════════════════════════════╝\n\n` +
     `Admin:\n` +
     `- ${prefix}panelgrupo\n` +
@@ -264,7 +264,7 @@ export default {
 
     const imageBuffer = getGroupMenuImageBuffer();
     const payload = {
-      title: "FSOCIETY-V1",
+      title: "JM BOT",
       subtitle: "Panel de grupo",
       footer: "Elige una accion del grupo",
       interactiveButtons: [
@@ -281,7 +281,7 @@ export default {
 
     const landingText =
       `╔════════════════════════════╗\n` +
-      `║ ${stylizeWord("FSOCIETY-V1")} ${stylizeSignature("group hub")} ║\n` +
+      `║ ${stylizeWord("JM BOT")} ${stylizeSignature("group hub")} ║\n` +
       `╠════════════════════════════╣\n` +
       `║ 🛡️ Seguridad, horarios y control.\n` +
       `║ 🎛️ Usa el selector para abrir cada ajuste.\n` +

@@ -148,7 +148,7 @@ export default {
       from,
       {
         text: statusText,
-        title: "FSOCIETY BOT",
+        title: "JM BOT",
         subtitle: "Panel de control",
         footer: "Selecciona una accion",
         interactiveButtons: [

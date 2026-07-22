@@ -122,7 +122,7 @@ export default {
 
     const panelText =
       `╔══════════════════════════════╗\n` +
-      `║ 🛡️ *${stylizeWord("FSOCIETY GPANEL")}* ║\n` +
+      `║ 🛡️ *${stylizeWord("JM GPANEL")}* ║\n` +
       `╠══════════════════════════════╣\n` +
       `║ ${stylizeSignature("security")} • ${stylizeSignature("control")} • ${stylizeSignature("automation")}\n` +
       `╟──────────────────────────────╢\n` +
@@ -294,7 +294,7 @@ export default {
     ];
 
     const payload = {
-      title: "FSOCIETY BOT",
+      title: "JM BOT",
       subtitle: "Panel de administracion del grupo",
       footer: "Selecciona una accion",
       interactiveButtons: [

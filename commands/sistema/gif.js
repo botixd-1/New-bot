@@ -162,7 +162,7 @@ export default {
             from,
             {
               text: "¿Quieres más resultados?",
-              footer: "FSOCIETY GIF",
+              footer: "JM GIF",
               interactiveButtons: [
                 {
                   name: "quick_reply",

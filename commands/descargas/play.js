@@ -116,7 +116,7 @@ function buildResultCaption(query, videos) {
   const published = clipText(featured?.ago || featured?.publishedAt || "Sin datos", 24);
 
   return [
-    "╭━━〔 🎧 *FSOCIETY PLAY* 〕━━⬣",
+    "╭━━〔 🎧 *JM PLAY* 〕━━⬣",
     `┃ 🔎 *Búsqueda:* ${clipText(query, 52)}`,
     `┃ 🎼 *Resultados:* ${videos.length} canciones`,
     "┣━━〔 ⭐ DESTACADO 〕━━⬣",
@@ -186,7 +186,7 @@ async function sendPlayPicker(sock, from, quoted, query, videos, prefix) {
   const payload = {
     ...(cover ? { image: cover, caption } : { text: caption }),
     media: Boolean(cover),
-    title: "🎶 FSOCIETY PLAY",
+    title: "🎶 JM PLAY",
     subtitle: `${videos.length} resultados encontrados`,
     footer: `YouTube • ${PLAY_SOURCE_URL}`,
     interactiveButtons: [

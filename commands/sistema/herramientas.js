@@ -8,7 +8,7 @@ function getPrefix(settings) {
 function buildFallbackText(prefix) {
   return (
     `╔════════════════════════════╗\n` +
-    `║   FSOCIETY-V1 TOOLKIT HUB  ║\n` +
+    `║   JM BOT TOOLKIT HUB  ║\n` +
     `╚════════════════════════════╝\n\n` +
     `Monitoreo:\n` +
     `- ${prefix}status\n` +
@@ -81,10 +81,10 @@ export default {
         from,
         {
           text:
-            "╭━━〔 🧰 TOOLKIT FSOCIETY-V1 〕━━⬣\n" +
+            "╭━━〔 🧰 TOOLKIT JM BOT 〕━━⬣\n" +
             "┃ Monitoreo, utilidades y gestion en un solo panel.\n" +
             "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━⬣",
-          title: "FSOCIETY-V1",
+          title: "JM BOT",
           subtitle: "Toolkit operativo",
           footer: "Selecciona la herramienta",
           interactiveButtons: [

@@ -1,5 +1,5 @@
 // =========================
-// FSOCIETY BOT - INDEX (MULTI BOT)
+// JM BOT - INDEX (MULTI BOT)
 //OWNDER DVYER 
 //LICENCIA CON DERECHOS (DVYER) 
 //NO BORRAR DERECHOS YA QUE NO ERES CREADOR DE LA BASE RESPETA AL DUEÑO 
@@ -578,12 +578,12 @@ function ensureSystemSettings(currentSettings) {
     String(currentSettings.system.maintenanceMessage || "").trim().slice(0, 240);
   currentSettings.system.autoProfileOnConnect = currentSettings.system.autoProfileOnConnect !== false;
   currentSettings.system.mainBotBio =
-    String(currentSettings.system.mainBotBio || `Ya conectado bot ${currentSettings?.botName || "Fsociety-V1"}`)
+    String(currentSettings.system.mainBotBio || `Ya conectado bot ${currentSettings?.botName || "JM Bot"}`)
       .trim()
       .slice(0, 139);
   currentSettings.system.mainBotPhoto = String(currentSettings.system.mainBotPhoto || "").trim();
   currentSettings.system.subbotBioTemplate =
-    String(currentSettings.system.subbotBioTemplate || "Subbot Fsociety-V1 activo")
+    String(currentSettings.system.subbotBioTemplate || "Subbot JM Bot activo")
       .trim()
       .slice(0, 139);
   currentSettings.system.subbotPhoto = String(currentSettings.system.subbotPhoto || "").trim();
@@ -963,7 +963,7 @@ function normalizePairingPhoneNumber(value) {
 
 function resolveConfiguredBotName(config = {}) {
   if (String(config?.id || "").toLowerCase() === "main") {
-    return String(settings?.botName || "Fsociety-V1").trim() || "Fsociety-V1";
+    return String(settings?.botName || "JM Bot").trim() || "JM Bot";
   }
 
   const slot = getBotSlot(config?.id || config?.slot);
@@ -971,8 +971,8 @@ function resolveConfiguredBotName(config = {}) {
     slot >= 1 && Array.isArray(settings?.subbots) ? settings.subbots[slot - 1] : null;
 
   return (
-    String(slotConfig?.name || config?.displayName || `Fsociety-V1 Subbot ${slot || 1}`)
-      .trim() || `Fsociety-V1 Subbot ${slot || 1}`
+    String(slotConfig?.name || config?.displayName || `JM Bot Subbot ${slot || 1}`)
+      .trim() || `JM Bot Subbot ${slot || 1}`
   );
 }
 
@@ -992,9 +992,9 @@ function resolveConfiguredBotBio(config = {}) {
     slot >= 1 && Array.isArray(settings?.subbots) ? settings.subbots[slot - 1] : null;
 
   return (
-    String(slotConfig?.bio || settings?.system?.subbotBioTemplate || "Subbot Fsociety-V1 activo")
+    String(slotConfig?.bio || settings?.system?.subbotBioTemplate || "Subbot JM Bot activo")
       .trim()
-      .slice(0, 139) || "Subbot Fsociety-V1 activo"
+      .slice(0, 139) || "Subbot JM Bot activo"
   );
 }
 
@@ -6252,7 +6252,7 @@ function buildBridgeStatusPayload() {
 
   return {
     ok: true,
-    source: "Fsociety-V1 runtime",
+    source: "JM Bot runtime",
     mainReady: Boolean(runtime?.isMainReady?.()),
     publicRequests: Boolean(subbotState.publicRequests),
     maxSlots: Number(subbotState.maxSlots || 0),
@@ -6475,7 +6475,7 @@ async function handleBridgeRequest(req, res, requestUrl) {
 
     sendDashboardJson(res, 200, {
       ok: true,
-      source: "Fsociety-V1 runtime",
+      source: "JM Bot runtime",
       solicitudId: `subbot-${Date.now()}`,
       respuesta:
         `Solicitud aceptada. Usa el codigo para vincular ${result.displayName || "tu subbot"} en WhatsApp.`,
@@ -7101,7 +7101,7 @@ function composeDashboardHeader(leftText = "", rightText = "", contentWidth = 80
 function buildDashboardFrame(params = {}) {
   const {
     bodyWidth = 98,
-    botName = "FSOCIETY BOT",
+    botName = "JM BOT",
     onlinePulse = "●",
     ownerName = "OWNER",
     prefixValue = ".",
@@ -7118,7 +7118,7 @@ function buildDashboardFrame(params = {}) {
   } = params;
 
   const contentWidth = Math.max(72, bodyWidth - 2);
-  const systemTitle = `${String(botName || "FSOCIETY BOT").trim().toUpperCase()} CONTROL PANEL`;
+  const systemTitle = `${String(botName || "JM BOT").trim().toUpperCase()} CONTROL PANEL`;
   const statusLabel = bootReady ? "ONLINE" : "BOOTING";
   const lines = [];
   const row = (text = "") => {
@@ -7191,7 +7191,7 @@ function buildMaskPairingScreen() {
 
   return [
     "╔════════════════════════════════════════════════════════════════════╗",
-    "║                         FSOCIETY LINK MASK                         ║",
+    "║                         JM LINK MASK                         ║",
     "╠════════════════════════════════════════════════════════════════════╣",
     "║                                                                    ║",
     "║                 .-''''''-.                                         ║",
@@ -8246,7 +8246,7 @@ async function askPairingModeInConsole(options = {}) {
   console.log("");
 
   console.log(chalk.bgBlack.redBright("╔════════════════════════════════════════════════════════════════════╗"));
-  console.log(chalk.bgBlack.whiteBright("║                FSOCIETY • SECURE LINK MODE • MAIN                 ║"));
+  console.log(chalk.bgBlack.whiteBright("║                JM • SECURE LINK MODE • MAIN                 ║"));
   console.log(chalk.bgBlack.redBright("╠════════════════════════════════════════════════════════════════════╣"));
   console.log(chalk.bgBlack.redBright("║  [1] QR RAPIDO (RECOMENDADO / ESTABLE)                            ║"));
   console.log(chalk.bgBlack.white("║      Escanea el codigo QR directo desde WhatsApp                  ║"));
@@ -9638,7 +9638,7 @@ function getBotAutoJoinTargetLabel(botState) {
 function buildManagedGroupJoinNotice(botState, isAdmin = false) {
   const botId = String(botState?.config?.id || "main").trim().toLowerCase();
   const botName = resolveBotDisplayName(botId || "main") ||
-    String(botState?.config?.displayName || settings?.botName || "Fsociety-V1");
+    String(botState?.config?.displayName || settings?.botName || "JM Bot");
   const prefix = getPrimaryPrefix(settings);
 
   if (botId === "main") {

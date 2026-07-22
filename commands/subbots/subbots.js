@@ -548,7 +548,7 @@ export default {
                 `Toca un numero/slot para abrir su menu privado.`,
               title: "SUBBOTS OWNER",
               subtitle: "Gestion privada",
-              footer: "FSOCIETY BOT",
+              footer: "JM BOT",
               interactiveButtons: [
                 {
                   name: "single_select",

@@ -248,7 +248,7 @@ export default {
         from,
         {
           text:
-            `*SORTEOS FSOCIETY*\n\n` +
+            `*SORTEOS JM*\n\n` +
             `${statusText}\n\n` +
             `Comandos:\n` +
             `- ${prefix}sorteo crear 10m | Premio\n` +

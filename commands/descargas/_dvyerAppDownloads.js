@@ -922,7 +922,7 @@ function buildPreviewCaption(info, config) {
   const summaryLines = [`${config.rowLabel} *${info.title || `${config.name} File`}*`];
   summaryLines.push(...buildAppMetaLines(info, config));
 
-  return buildDownloadCard("📦 *FSOCIETY DOWNLOAD*", [
+  return buildDownloadCard("📦 *JM DOWNLOAD*", [
     { lines: summaryLines },
     info.description
       ? {
@@ -985,7 +985,7 @@ async function sendSearchPicker(ctx, query, results, config) {
 
   const caption =
     buildSelectorCaption({
-      title: `${config.rowLabel} *FSOCIETY DOWNLOAD*`,
+      title: `${config.rowLabel} *JM DOWNLOAD*`,
       query,
       lead: config.featuredLead || `📱 ${config.name} con resultados listos para descargar`,
       featuredTitle: results[0]?.title || "Sin título",
@@ -1003,7 +1003,7 @@ async function sendSearchPicker(ctx, query, results, config) {
   const interactivePayload = buildSelectorPayload({
     imageBuffer: thumbBuffer,
     caption,
-    title: "📦 FSOCIETY DOWNLOAD",
+    title: "📦 JM DOWNLOAD",
     subtitle: config.subtitle,
     footer: config.footer,
     selectorTitle: config.pickerTitle,

@@ -583,7 +583,7 @@ function buildResultMessage(result, modeLabel = "NORMAL", contactText = "") {
   const uploadHost = result?.upload?.provider || "No disponible";
 
   const lines = [
-    "╭━━━〔 ⚡ *SPEEDTEST FSOCIETY* 〕━━━⬣",
+    "╭━━━〔 ⚡ *SPEEDTEST JM* 〕━━━⬣",
     "┃",
     `┃ ${status.emoji} *Calidad:* ${status.label}`,
     `┃ 🧪 *Modo:* ${modeLabel}`,

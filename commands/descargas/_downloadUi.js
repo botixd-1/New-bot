@@ -11,7 +11,7 @@ export function clipText(value = "", max = 72) {
   return text.length <= max ? text : `${text.slice(0, Math.max(1, max - 3))}...`;
 }
 
-export function buildDownloadCard(title = "FSOCIETY DOWNLOAD", sections = []) {
+export function buildDownloadCard(title = "JM DOWNLOAD", sections = []) {
   const lines = [`╭━━〔 ${title} 〕━━⬣`];
 
   for (const section of sections) {

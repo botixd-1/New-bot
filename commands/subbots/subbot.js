@@ -145,7 +145,7 @@ async function sendSubbotRequestMenu({
           `Modo publico: *${subbotAccess?.publicRequests ? "ENCENDIDO" : "APAGADO"}*`,
         title: "SUBBOT",
         subtitle: slot ? `Slot seleccionado: ${slot}` : "Seleccion rapida",
-        footer: "FSOCIETY BOT",
+        footer: "JM BOT",
         interactiveButtons: [
           {
             name: "single_select",
@@ -238,7 +238,7 @@ async function sendOwnerSlotMenu({
         `En este chat: ${chatStatus}`,
       title: "SUBBOT OWNER",
       subtitle: `Slot ${slot} | ${bot?.displayName || "Subbot"}`,
-      footer: "FSOCIETY BOT",
+      footer: "JM BOT",
       interactiveButtons: [
         {
           name: "single_select",

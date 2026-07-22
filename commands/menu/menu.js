@@ -37,7 +37,7 @@ function getPrefixLabel(settings) {
 }
 
 function getGithubLink(settings) {
-  const fallback = "https://github.com/DevYerZx/fsociety-bot";
+  const fallback = "https://github.com/botixd-1/New-bot";
   const raw = cleanText(
     settings?.githubUrl || settings?.repoUrl || settings?.repository || fallback
   );
@@ -191,7 +191,7 @@ function getMenuContext({ settings, botId = "", botLabel = "" }) {
     return {
       title: "JM Bot",
       subtitle: "MENÚ PRINCIPAL",
-      botLine: settings?.botName || "Fsociety-V1",
+      botLine: settings?.botName || "JM Bot",
     };
   }
 
@@ -200,7 +200,7 @@ function getMenuContext({ settings, botId = "", botLabel = "" }) {
   const subbotName =
     (slot >= 1 && Array.isArray(settings?.subbots) && settings.subbots[slot - 1]?.name) ||
     cleanText(botLabel) ||
-    `Fsociety-V1 Subbot ${slot || 1}`;
+    `JM Bot Subbot ${slot || 1}`;
 
   return {
     title: `JM Bot SUBBOT ${slot || 1}`,
@@ -480,7 +480,7 @@ function buildTopPanel({
     `│ ${stylizeWord("Menu")} • ${stylizeSubtitle(menuTitle)}`,
     `│ ${stylizeSubtitle(menuSubtitle)}`,
     "╟────────────────────────────────────────────╢",
-    `│ 🤖 Bot activo: *${stylizeWord(botLine || settings?.botName || "Fsociety-V1")}*`,
+    `│ 🤖 Bot activo: *${stylizeWord(botLine || settings?.botName || "JM Bot")}*`,
     `│ 👑 Owner: *${stylizeWord(settings?.ownerName || "Owner")}*`,
     `│ 🧷 Prefijos: *${stylizeMono(prefixLabel)}*`,
     `│ ⏱️ Online: *${uptime}*`,
@@ -633,7 +633,6 @@ function buildCategorySections(categoryNames, categories, primaryPrefix) {
   const mainRows = [
     pick("menu"),
     pick("descargas"),
-    pick("free_streaming_accounts"),
     pick("grupos"),
   ].filter(Boolean);
   if (mainRows.length) {
@@ -772,7 +771,6 @@ function buildMenuLandingText(menuContext, settings, uptime, totalCategories, to
     `│ ⚙️ Comandos: *${totalCommands}*`,
     `│ ⚡ Red: *${getPrimaryPrefix(settings)}speedtest rapido*`,
     "├────────────────────────────────────────────┤",
-    `│ Tip: ${stylizeMono(`${getPrimaryPrefix(settings)}menu free streaming accounts`)}`,
     "╰────────────────────────────────────────────╯",
   ].join("\n");
 }
@@ -969,7 +967,7 @@ export default {
 
       try {
         const payload = {
-          footer: `© ${settings?.ownerName || "Fsociety-V1"}`,
+          footer: `© ${settings?.ownerName || "JM Bot"}`,
           buttons,
           headerType: 1,
           ...global.channelInfo,
@@ -997,7 +995,7 @@ export default {
             text: landingText,
             title: menuContext.title,
             subtitle: menuContext.subtitle,
-            footer: `© ${settings?.ownerName || "Fsociety-V1"}`,
+            footer: `© ${settings?.ownerName || "JM Bot"}`,
             interactiveButtons: [
               {
                 name: "single_select",

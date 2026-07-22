@@ -264,7 +264,7 @@ export default {
         from,
         {
           text:
-            `*VOTACIONES FSOCIETY*\n\n` +
+            `*VOTACIONES JM*\n\n` +
             `${statusText}\n\n` +
             `Comandos:\n` +
             `- ${prefix}votacion crear 10m | Pregunta | Opcion 1 | Opcion 2\n` +

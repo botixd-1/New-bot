@@ -91,7 +91,7 @@ export default {
         from,
         {
           text: "Comandos Free Fire",
-          title: "FSOCIETY BOT",
+          title: "JM BOT",
           subtitle: "Menu Free Fire",
           footer: "Solo Free Fire",
           interactiveButtons: [

@@ -126,7 +126,7 @@ export default {
       from,
       {
         text: statusText,
-        title: "FSOCIETY BOT",
+        title: "JM BOT",
         subtitle: "Diagnostico en tiempo real",
         footer: "Pulsa para refrescar",
         interactiveButtons: [

@@ -104,9 +104,9 @@ function buildMainPanel({ settings, comandos, vipCount }) {
   const cpuLoad = estimateCpuLoadPercent();
 
   return [
-    "╭━━〔 TERMINAL FSOCIETY 〕━━⬣",
+    "╭━━〔 TERMINAL JM 〕━━⬣",
     "┃  .-=-=-=-=-=-=-=-=-=-=-=-.",
-    "┃  |      FSOCIETY NODE    |",
+    "┃  |      JM NODE    |",
     "┃  '=-=-=-=-=-=-=-=-=-=-=-='",
     "┃",
     `┃ 👑 Owner      : ${settings.ownerName || "Owner"}`,

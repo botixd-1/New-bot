@@ -69,7 +69,7 @@ function buildSections(prefix) {
 
 function buildMenuCaption() {
   return buildSelectorCaption({
-    title: "🔎 *FSOCIETY BUSQUEDA*",
+    title: "🔎 *JM BUSQUEDA*",
     query: "Accesos rapidos del bot",
     lead: "🎯 Buscadores de YouTube, TikTok e imagenes",
     featuredTitle: "Descargas con selector visual",
@@ -99,7 +99,7 @@ export default {
         from,
         buildSelectorPayload({
           caption,
-          title: "🔎 FSOCIETY BUSQUEDA",
+          title: "🔎 JM BUSQUEDA",
           subtitle: "Menu inteligente",
           footer: "Busquedas y descargas",
           selectorTitle: "Abrir buscadores",

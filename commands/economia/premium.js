@@ -947,7 +947,7 @@ async function sendPremiumPanel({ sock, from, msg, settings, profile, user }) {
 
   const messagePayload = {
     text: panelText,
-    title: "FSOCIETY BOT",
+    title: "JM BOT",
     subtitle: "Economia Premium PRO",
     footer: "Temporadas, pase, racha y ranking",
     interactiveButtons: [

@@ -278,7 +278,7 @@ export default {
         from,
         {
           text: buildStatusText(config, prefix),
-          title: "FSOCIETY BOT",
+          title: "JM BOT",
           subtitle: "Panel Welcome & Bye",
           footer: "Selecciona una opcion",
           interactiveButtons: [

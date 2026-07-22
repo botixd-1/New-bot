@@ -14,7 +14,7 @@ import {
 
 const RESULT_LIMIT = 8;
 const COOLDOWN_TIME = 0;
-const DEFAULT_COVER = "https://i.ibb.co/5xrnyZhN/fsociety-bot-profile.png";
+const DEFAULT_COVER = "https://i.ibb.co/mF0XwnqM/busqueda-cover.jpg";
 const BAILEYS_MESSAGES_FILE = path.join(
   process.cwd(),
   "node_modules",
@@ -103,7 +103,7 @@ function buildPickCommand(prefix, query, pick) {
 
 function buildUsageMessage(prefix = ".") {
   return buildUsageCard({
-    title: "📌 *FSOCIETY PINTEREST*",
+    title: "📌 *JM PINTEREST*",
     summary: [
       "Busca imágenes estilo Pinterest y las muestra en carrusel.",
       "Puedes tocar una tarjeta para enviar la imagen exacta.",
@@ -129,7 +129,7 @@ function buildNotFoundMessage(query = "") {
 }
 
 function buildSearchingMessage(query = "") {
-  return buildDownloadCard("🔎 *FSOCIETY PINTEREST*", [
+  return buildDownloadCard("🔎 *JM PINTEREST*", [
     {
       lines: [
         `Buscando imágenes para: *${clip(query, 45)}*`,
@@ -203,7 +203,7 @@ function buildCarouselCards(results = [], query = "", prefix = ".") {
           `🖼️ Título: ${title}\n` +
           `🌐 Fuente: ${source}\n\n` +
           `Toca enviar para recibir esta imagen.`,
-        footer: "FSOCIETY BOT",
+        footer: "JM BOT",
         buttons: [
           {
             name: "quick_reply",
@@ -228,8 +228,8 @@ async function sendPinterestCarousel(sock, from, quoted, query, results, prefix)
   await sock.sendMessage(
     from,
     {
-      text: "📌 FSOCIETY PIN",
-      title: "FSOCIETY DOWNLOAD",
+      text: "📌 JM PIN",
+      title: "JM DOWNLOAD",
       footer: `Pinterest • ${clip(query, 60)}`,
       cards,
       ...global.channelInfo,
@@ -277,7 +277,7 @@ async function sendFallbackSelector(sock, from, quoted, query, results, prefix) 
       caption,
       title: "📌 PINTEREST SEARCH",
       subtitle: "Selector de imágenes",
-      footer: "Pinterest • FSOCIETY",
+      footer: "Pinterest • JM",
       selectorTitle: "Elegir imagen",
       sections: [
         {

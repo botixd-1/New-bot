@@ -165,7 +165,7 @@ async function sendVideoMessage(sock, from, quoted, info) {
         document: { url: info.filePath },
         mimetype: "video/mp4",
         fileName: info.fileName,
-        caption: `*FSOCIETY BOT*\n\n🎬 ${info.title || "Cuevana"}\n📦 Enviado como documento`,
+        caption: `*JM BOT*\n\n🎬 ${info.title || "Cuevana"}\n📦 Enviado como documento`,
         ...global.channelInfo,
       },
       quoted
@@ -179,7 +179,7 @@ async function sendVideoMessage(sock, from, quoted, info) {
       video: { url: info.filePath },
       mimetype: "video/mp4",
       fileName: info.fileName,
-      caption: `*FSOCIETY BOT*\n\n🎬 ${info.title || "Cuevana"}`,
+      caption: `*JM BOT*\n\n🎬 ${info.title || "Cuevana"}`,
       ...global.channelInfo,
     },
     quoted
@@ -281,7 +281,7 @@ export default {
       await conn.sendMessage(
         from,
         {
-          text: "*FSOCIETY BOT*\n\nDescargando video, espera un momento...",
+          text: "*JM BOT*\n\nDescargando video, espera un momento...",
           ...global.channelInfo,
         },
         quoted
@@ -359,7 +359,7 @@ export default {
           from,
           {
             text: `Episodios disponibles: ${clipText(data.title || "Serie", 80)}`,
-            title: "FSOCIETY BOT",
+            title: "JM BOT",
             subtitle: "Selecciona episodio",
             footer: "Cuevana",
             interactiveButtons: [
@@ -394,7 +394,7 @@ export default {
         from,
         {
           text: `Descargas para: ${clipText(data.title || "Contenido", 80)}`,
-          title: "FSOCIETY BOT",
+          title: "JM BOT",
           subtitle: "Selecciona servidor",
           footer: "Cuevana",
           interactiveButtons: [
@@ -451,14 +451,14 @@ export default {
       ? {
           image: thumbBuffer,
           caption:
-            `*FSOCIETY BOT*\n\n` +
+            `*JM BOT*\n\n` +
             `Resultado para: *${clipText(query, 80)}*\n` +
             `Primer resultado: *${clipText(results[0]?.title || "Sin titulo", 80)}*\n\n` +
             `Selecciona el contenido que quieres.`,
         }
       : {
         text:
-          `*FSOCIETY BOT*\n\n` +
+          `*JM BOT*\n\n` +
           `Resultado para: *${clipText(query, 80)}*\n\n` +
           `Selecciona el contenido que quieres.`,
       };
@@ -476,7 +476,7 @@ export default {
       from,
       {
         text: `Resultados para: ${clipText(query, 80)}`,
-        title: "FSOCIETY BOT",
+        title: "JM BOT",
         subtitle: "Selecciona contenido",
         footer: "Cuevana",
         interactiveButtons: [

@@ -145,7 +145,7 @@ export default {
             `• ${prefix}antiprivado on\n` +
             `• ${prefix}antiprivado off\n` +
             `• ${prefix}antiprivado estado`,
-          title: "FSOCIETY BOT",
+          title: "JM BOT",
           subtitle: "Control privado",
           footer: state.enabled ? "Privado bloqueado" : "Privado permitido",
           interactiveButtons: [

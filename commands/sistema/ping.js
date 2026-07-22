@@ -57,7 +57,7 @@ export default {
         from,
         {
           text: [
-            "╭━━━〔 🏓 *PING FSOCIETY* 〕━━━⬣",
+            "╭━━━〔 🏓 *PING JM* 〕━━━⬣",
             "┃",
             `┃ ⚡ *Latencia:* ${latencyMs.toFixed(0)} ms`,
             `┃ 🚀 *Uptime:* ${formatUptime(process.uptime())}`,

@@ -903,7 +903,7 @@ async function sendFreeFireCatalog(sock, from, msg, prefix, tournament = null) {
       from,
       {
         text: "*FREE FIRE CATALOGO*\nSelecciona una accion rapida.",
-        title: "FSOCIETY BOT",
+        title: "JM BOT",
         subtitle: title,
         footer: "Torneos Free Fire",
         interactiveButtons: [

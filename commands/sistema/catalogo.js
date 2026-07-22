@@ -66,7 +66,7 @@ export default {
             "Pulsa el boton para abrir el catalogo del negocio.",
           title: "Catalogo WA",
           subtitle: "Compatibilidad Business",
-          footer: "Fsociety-V1",
+          footer: "JM Bot",
           interactiveButtons: [
             {
               name: "cta_catalog",
@@ -111,7 +111,7 @@ export default {
             `Negocio: +${targetPhone}`,
           title: "Producto WA",
           subtitle: "Vista directa",
-          footer: "Fsociety-V1",
+          footer: "JM Bot",
           interactiveButtons: [
             {
               name: "mpm",

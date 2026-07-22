@@ -424,7 +424,7 @@ async function sendRootFeed({ sock, from, msg, settings, endpoint, title, subtit
   const payload = buildSelectorPayload({
     imageBuffer: buffer,
     caption: `${caption}\n\n${buildListText(results, data.count || results.length)}`,
-    title: "FSOCIETY BOT",
+    title: "JM BOT",
     subtitle: "Anime Hub",
     footer: "Selecciona una accion",
     selectorTitle: "Anime Hub",
@@ -551,7 +551,7 @@ async function sendDetailToJid({ sock, jid, msg, settings, target, mode = "open"
   const payload = buildSelectorPayload({
     imageBuffer,
     caption,
-    title: "FSOCIETY BOT",
+    title: "JM BOT",
     subtitle: "Anime detalle",
     footer: "Abrir, descargar o volver al selector",
     selectorTitle: "Anime detalle",
@@ -670,7 +670,7 @@ async function sendChapterToJid({
   const payload = buildSelectorPayload({
     imageBuffer,
     caption,
-    title: "FSOCIETY BOT",
+    title: "JM BOT",
     subtitle: "Anime capitulo",
     footer: "Detalle del capitulo",
     selectorTitle: "Capitulo anime",

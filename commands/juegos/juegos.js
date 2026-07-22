@@ -16,7 +16,7 @@ function getGamesImageBuffer() {
 function buildFallbackText(prefix) {
   return (
     `╔════════════════════════════╗\n` +
-    `║ ${stylizeWord("FSOCIETY")} ${stylizeSignature("game hub")} ║\n` +
+    `║ ${stylizeWord("JM")} ${stylizeSignature("game hub")} ║\n` +
     `╠════════════════════════════╣\n` +
     `║ 🎮 Minijuegos, ranking y perfil.\n` +
     `║ 🧠 Usa ${prefix}salirjuego si quedas en una partida.\n` +
@@ -51,7 +51,7 @@ function buildFallbackText(prefix) {
 function buildLandingText(prefix) {
   return [
     "╔════════════════════════════╗",
-    `║ ${stylizeWord("FSOCIETY")} ${stylizeSignature("game arena")} ║`,
+    `║ ${stylizeWord("JM")} ${stylizeSignature("game arena")} ║`,
     "╠════════════════════════════╣",
     "║ 🎮 Juegos rapidos y competitivos.",
     "║ 🏆 Rankings, perfil y retos por grupo.",
@@ -220,7 +220,7 @@ export default {
     const imageBuffer = getGamesImageBuffer();
     const sections = buildSections(prefix);
     const payload = {
-      title: "FSOCIETY BOT",
+      title: "JM BOT",
       subtitle: "Game Hub",
       footer: "Elige un juego o panel",
       interactiveButtons: [

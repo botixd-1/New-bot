@@ -41,7 +41,7 @@ export default {
     const communityImage = getCommunityImageBuffer();
 
     const lines = [
-      "╭━━〔 🌐 *GRUPOS OFICIALES FSOCIETY-V1* 〕━━⬣",
+      "╭━━〔 🌐 *GRUPOS OFICIALES JM BOT* 〕━━⬣",
       "┃ *Comunidad (DVYER):*",
       `┃ ${COMMUNITY_MAIN_LINK}`,
       "┃",
@@ -76,7 +76,7 @@ export default {
           from,
           {
             text: "⚡ Si no abre algun grupo, entra directo a la comunidad oficial desde aqui:",
-            title: "FSOCIETY-V1",
+            title: "JM BOT",
             subtitle: "Soporte y comunidad",
             footer: "Boton directo de comunidad",
             interactiveButtons: [
@@ -100,7 +100,7 @@ export default {
           from,
           {
             text: communityText,
-            title: "FSOCIETY-V1",
+            title: "JM BOT",
             subtitle: "Soporte y comunidad",
             footer: "Usa el boton para abrir la comunidad directo",
             interactiveButtons: [

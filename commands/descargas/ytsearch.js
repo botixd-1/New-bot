@@ -13,7 +13,7 @@ import {
 } from "./_downloadUi.js";
 
 const RESULT_LIMIT = 5;
-const DEFAULT_CAROUSEL_COVER = "https://i.ibb.co/5xrnyZhN/fsociety-bot-profile.png";
+const DEFAULT_CAROUSEL_COVER = "https://i.ibb.co/mF0XwnqM/busqueda-cover.jpg";
 const BAILEYS_MESSAGES_FILE = path.join(
   process.cwd(),
   "node_modules",
@@ -219,7 +219,7 @@ function buildCarouselCards(results, prefix, query, bodyMode = "detailed", butto
     image: { url: item.thumbnail || DEFAULT_CAROUSEL_COVER },
     title: "YouTube - Resultado",
     body: buildCardBody(item, index, query, prefix, bodyMode),
-    footer: "FSOCIETY BOT",
+    footer: "JM BOT",
     buttons: buildCardButtons(item, prefix, buttonMode),
   }));
 }
@@ -246,9 +246,9 @@ async function sendCarouselResults(sock, from, quoted, query, results, prefix) {
   }
 
   const basePayload = {
-    text: "🎬 FSOCIETY YTSEARCH",
+    text: "🎬 JM YTSEARCH",
     footer: `YouTube • ${clipText(query, 60)}`,
-    title: "FSOCIETY DOWNLOAD",
+    title: "JM DOWNLOAD",
     ...global.channelInfo,
   };
 
@@ -325,7 +325,7 @@ async function sendFallbackResults(sock, from, quoted, query, results, prefix) {
       caption,
       title: "🎬 YOUTUBE SEARCH",
       subtitle: "MP3 y MP4",
-      footer: "YouTube • FSOCIETY",
+      footer: "YouTube • JM",
       selectorTitle: "Elegir descarga",
       sections,
     }),

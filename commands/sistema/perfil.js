@@ -106,7 +106,7 @@ export default {
       : `🏅 *NIVEL GRUPO*\n• Disponible al usar este comando dentro de un grupo`;
 
     const text =
-      `╭━━━〔 👤 PERFIL FSOCIETY 〕━━━⬣\n` +
+      `╭━━━〔 👤 PERFIL JM 〕━━━⬣\n` +
       `┃ Usuario: *${formatUser(sender)}*\n` +
       `┃ Nombre: *${cleanText(economy?.lastKnownName || "") || "Sin nombre"}*\n` +
       `╰━━━━━━━━━━━━━━━━━━━━━━⬣\n\n` +

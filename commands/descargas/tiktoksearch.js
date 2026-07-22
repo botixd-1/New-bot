@@ -12,7 +12,7 @@ import {
 } from "./_downloadUi.js";
 
 const RESULT_LIMIT = 5;
-const DEFAULT_CAROUSEL_COVER = "https://i.ibb.co/5xrnyZhN/fsociety-bot-profile.png";
+const DEFAULT_CAROUSEL_COVER = "https://i.ibb.co/mF0XwnqM/busqueda-cover.jpg";
 const SEARCH_RETRY_ATTEMPTS = 3;
 const SEARCH_RETRY_DELAY_MS = 900;
 const BAILEYS_MESSAGES_FILE = path.join(
@@ -253,7 +253,7 @@ function buildCarouselCards(results, prefix, query, mode = "video", bodyMode = "
       ...mediaPayload,
       title: "TikTok - Resultado",
       body: buildDetailedCardBody(item, index, query, bodyMode),
-      footer: "FSOCIETY BOT",
+      footer: "JM BOT",
       buttons: buildCardButtons(item, prefix, buttonMode),
     };
   });
@@ -265,9 +265,9 @@ async function sendCarouselResults(sock, from, quoted, query, results, prefix) {
   }
 
   const basePayload = {
-    text: "🎥 FSOCIETY TIKTOK",
+    text: "🎥 JM TIKTOK",
     footer: `TikTok • ${clipText(query, 60)}`,
-    title: "FSOCIETY DOWNLOAD",
+    title: "JM DOWNLOAD",
     ...global.channelInfo,
   };
 
@@ -339,7 +339,7 @@ async function sendFallbackResults(sock, from, quoted, query, results, prefix) {
       caption,
       title: "🎥 TIKTOK SEARCH",
       subtitle: "Selector visual",
-      footer: "TikTok • FSOCIETY",
+      footer: "TikTok • JM",
       selectorTitle: "Ver resultados",
       sections,
     }),

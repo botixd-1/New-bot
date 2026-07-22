@@ -83,7 +83,7 @@ export default {
       const processMemory = process.memoryUsage();
 
       const text = [
-        "╭━━━〔 🖥️ *SYSINFO FSOCIETY* 〕━━━⬣",
+        "╭━━━〔 🖥️ *SYSINFO JM* 〕━━━⬣",
         "┃",
         `┃ 🏷️ *Host:* ${os.hostname()}`,
         `┃ 🌐 *Entorno:* ${getRuntimeLabel()}`,

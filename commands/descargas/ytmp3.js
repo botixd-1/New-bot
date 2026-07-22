@@ -835,7 +835,7 @@ function buildLimitMessage(retryMs) {
     "┃ ✦ Mantén estable el sistema",
     "┃ ✦ Usa el comando con calma",
     "┃",
-    "╰━━━〔 FSOCIETY PROTECTION 〕━━━⬣",
+    "╰━━━〔 JM PROTECTION 〕━━━⬣",
   ].join("\n");
 }
 

@@ -192,7 +192,7 @@ export default {
         from,
         {
           text: buildPanelMessage(prefix, isOff),
-          title: "FSOCIETY BOT",
+          title: "JM BOT",
           subtitle: "Control de grupo",
           footer: isOff ? "Estado: BOT OFF" : "Estado: BOT ON",
           interactiveButtons: [
