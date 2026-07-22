@@ -487,7 +487,6 @@ function buildTopPanel({
     `│ 🗂️ Categorías: *${stylizeWord(totalCategories)}*`,
     `│ ⚙️ Comandos reales: *${stylizeWord(totalCommands)}*`,
     `│ 🚀 Atajo: *${stylizeMono(`${getPrimaryPrefix(settings)}speedtest rapido`)}*`,
-    `│ 🔗 GitHub: ${githubLink}`,
     "╰────────────────────────────────────────────╯",
   ].join("\n");
 }
@@ -772,7 +771,6 @@ function buildMenuLandingText(menuContext, settings, uptime, totalCategories, to
     `│ 🗂️ Categorías: *${totalCategories}*`,
     `│ ⚙️ Comandos: *${totalCommands}*`,
     `│ ⚡ Red: *${getPrimaryPrefix(settings)}speedtest rapido*`,
-    `│ 🔗 GitHub: ${githubLink}`,
     "├────────────────────────────────────────────┤",
     `│ Tip: ${stylizeMono(`${getPrimaryPrefix(settings)}menu free streaming accounts`)}`,
     "╰────────────────────────────────────────────╯",
