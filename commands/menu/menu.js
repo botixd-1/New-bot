@@ -621,14 +621,12 @@ function buildMenuButtons(primaryPrefix, categoryNames, categories) {
   return [flowButton, ...quickButtons];
 }
 
-function buildMenuLandingText(menuContext, settings, uptime, totalCategories, totalCommands, prefixLabel) {
+function buildMenuLandingText(menuContext, settings, uptime, totalCategories, totalCommands, prefixLabel, msg) {
+  const invokerName = cleanText(msg?.pushName || msg?.senderPhone || msg?.sender || "usuario");
   return [
-    "╭─────────────────╮",
-    "│   JM Bot  │",
-    "├─────────────────┤",
-    `│ 👋 Hola, *${menuContext.botLine || settings?.botName || "usuario"}*`,
+    `│ 👋 Hola, *${invokerName}*`,
     "│ Pulsa *JM Bot* para desplegar categorias.",
-    "├─────────────────┤",
+    "  ─────────────────",
     `│ 👤 Vista: *${menuContext.subtitle}*`,
     `│ 🧷 Prefijos: *${prefixLabel}*`,
     `│ 🤖 Bot: *${menuContext.title}*`,
@@ -638,7 +636,6 @@ function buildMenuLandingText(menuContext, settings, uptime, totalCategories, to
     `│ ⚙️ Comandos: *${totalCommands}*`,
     `│ ⚡ Red: *${getPrimaryPrefix(settings)}speedtest rapido*`,
     "╰─────────────────╯",
-    `> © ${settings?.ownerName || "JM"}`,
   ].join("\n");
 }
 
@@ -751,7 +748,7 @@ export default {
 
       const fullCaption = textParts.join("\n\n").trim();
       const finalCaption = makeSingleCaption(fullCaption, primaryPrefix);
-      const landingText = buildMenuLandingText(menuContext, settings, uptime, categoryNames.length, totalCommands, prefixLabel);
+      const landingText = buildMenuLandingText(menuContext, settings, uptime, categoryNames.length, totalCommands, prefixLabel, msg);
       const buttons = buildMenuButtons(primaryPrefix, categoryNames, categories);
 
       try {
