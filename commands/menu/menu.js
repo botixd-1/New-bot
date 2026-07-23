@@ -435,13 +435,6 @@ function chunkRows(rows, size = 10) {
   return chunks;
 }
 
-function buildDensityBar(current = 0, total = 0, size = 6) {
-  const safeTotal = Math.max(1, Number(total || 0));
-  const ratio = Math.max(0, Math.min(1, Number(current || 0) / safeTotal));
-  const filled = Math.max(1, Math.round(ratio * size));
-  return `${"■".repeat(filled)}${"□".repeat(Math.max(0, size - filled))}`;
-}
-
 function getCategoryHighlight(commands = [], primaryPrefix = ".") {
   const items = Array.isArray(commands) ? commands : [];
   const accessCounts = {
@@ -462,110 +455,60 @@ function getCategoryHighlight(commands = [], primaryPrefix = ".") {
   };
 }
 
-function buildTopPanel({
-  settings,
-  uptime,
-  totalCategories,
-  totalCommands,
-  prefixLabel,
-  menuTitle,
-  menuSubtitle,
-  botLine,
-}) {
-  const githubLink = getGithubLink(settings);
+
+const DIVIDER = "─".repeat(20);
+
+function buildTopPanel({ settings, uptime, totalCategories, totalCommands, prefixLabel, botLine }) {
   return [
-    "╭────────────────────────────────────────────╮",
-    `│ ✦ ${stylizeSignature("JM Bot")} ${stylizeSubtitle("command hub")} ✦`,
-    "├────────────────────────────────────────────┤",
-    `│ ${stylizeWord("Menu")} • ${stylizeSubtitle(menuTitle)}`,
-    `│ ${stylizeSubtitle(menuSubtitle)}`,
-    "╟────────────────────────────────────────────╢",
-    `│ 🤖 Bot activo: *${stylizeWord(botLine || settings?.botName || "JM Bot")}*`,
-    `│ 👑 Owner: *${stylizeWord(settings?.ownerName || "Owner")}*`,
-    `│ 🧷 Prefijos: *${stylizeMono(prefixLabel)}*`,
-    `│ ⏱️ Online: *${uptime}*`,
-    `│ 🗂️ Categorías: *${stylizeWord(totalCategories)}*`,
-    `│ ⚙️ Comandos reales: *${stylizeWord(totalCommands)}*`,
-    `│ 🚀 Atajo: *${stylizeMono(`${getPrimaryPrefix(settings)}speedtest rapido`)}*`,
-    "╰────────────────────────────────────────────╯",
+    `> ${stylizeWord("JM BOT")} — MENÚ PRINCIPAL`,
+    DIVIDER,
+    "",
+    `> Bot: ${botLine || settings?.botName || "JM Bot"}`,
+    `> Owner: ${settings?.ownerName || "Owner"}`,
+    `> Prefijo: ${prefixLabel}`,
+    `> Online: ${uptime}`,
+    `> Categorías: ${totalCategories} · Comandos: ${totalCommands}`,
+    `> Atajo: ${getPrimaryPrefix(settings)}speedtest rapido`,
   ].join("\n");
 }
 
 function buildCategoryIndex(categoryNames, categories) {
-  const totalCommands = categoryNames.reduce(
-    (sum, category) => sum + (categories[category]?.length || 0),
-    0
-  );
-
   const list = categoryNames
     .map((category, index) => {
       const icon = getCategoryIcon(category);
       const label = normalizeCategoryLabel(category);
       const count = categories[category]?.length || 0;
-      const density = buildDensityBar(count, totalCommands, 5);
       const slot = String(index + 1).padStart(2, "0");
-      return `${slot}) ${icon} ${label}  [${count}] ${density}`;
+      return `> ${slot}. ${icon} ${label} (${count})`;
     })
-    .join("\n│ ");
+    .join("\n");
 
-  return [
-    "╭────────────────────────────────────────────╮",
-    `│ 🧭 *${stylizeWord("CATEGORY DIRECTORY")}*`,
-    "├────────────────────────────────────────────┤",
-    `│ ${list}`,
-    "╰────────────────────────────────────────────╯",
-  ].join("\n");
+  return [`> CATEGORÍAS`, DIVIDER, "", list].join("\n");
 }
 
 function buildCategoryBlock(category, commands, primaryPrefix) {
   const icon = getCategoryIcon(category);
   const title = normalizeCategoryLabel(category);
-  const highlight = getCategoryHighlight(commands, primaryPrefix);
   const maxPreview = 6;
 
-  const lines = [
-    `╭──────────────── ${icon} *${stylizeWord(title)}* ────────────────╮`,
-    `│ ${getCategoryDescription(category, commands.length)}`,
-    `│ Access Mix: PUBLICO ${highlight.accessCounts.PUBLICO} • ADMIN ${highlight.accessCounts.ADMIN} • OWNER ${highlight.accessCounts.OWNER}`,
-    `│ Dominant Access: *${highlight.mainAccess}*`,
-    "├────────────────────────────────────────────────────┤",
-  ];
+  const lines = [`> ${icon} ${title} — ${commands.length} comandos`, DIVIDER, ""];
 
   const commandLines = commands
     .slice(0, maxPreview)
-    .map((item, index) => {
-      const slot = String(index + 1).padStart(2, "0");
-      return `│ ${slot}. *${primaryPrefix}${item.name}*  [${item.access}]`;
-    });
+    .map((item) => `> ✦ ${primaryPrefix}${item.name}`);
   lines.push(...commandLines);
 
   if (commands.length > maxPreview) {
-    lines.push(`│ … and *${commands.length - maxPreview}* more commands`);
+    lines.push(`> … y ${commands.length - maxPreview} más`);
   }
-
-  if (highlight.quick.length) {
-    lines.push("├────────────────────────────────────────────────────┤");
-    lines.push(`│ Quick Start: ${highlight.quick.join(" • ")}`);
-  }
-
-  lines.push("╰────────────────────────────────────────────────────╯");
 
   return lines.join("\n");
 }
 
-function buildFooter(primaryPrefix, settings = {}) {
+function buildFooter(primaryPrefix) {
   return [
-    "╭────────────────────────────────────────────╮",
-    `│     ${stylizeWord("QUICK ACCESS")} • ${stylizeSignature("fast lane")}     │`,
-    "├────────────────────────────────────────────┤",
-    `│ • ${stylizeMono(`${primaryPrefix}menu`)}`,
-    `│ • ${stylizeMono(`${primaryPrefix}menu descargas`)}`,
-    `│ • ${stylizeMono(`${primaryPrefix}menu free streaming accounts`)}`,
-    `│ • ${stylizeMono(`${primaryPrefix}menugrupo`)}`,
-    `│ • ${stylizeMono(`${primaryPrefix}status`)}`,
-    `│ • ${stylizeMono(`${primaryPrefix}owner`)}`,
-    `│ • Repo: ${getGithubLink(settings)}`,
-    "╰────────────────────────────────────────────╯",
+    DIVIDER,
+    `> ${primaryPrefix}menu <categoria> · ${primaryPrefix}status · ${primaryPrefix}menugrupo`,
   ].join("\n");
 }
 
@@ -578,10 +521,8 @@ function makeSingleCaption(fullCaption, primaryPrefix) {
 
   return (
     `${fullCaption.slice(0, 3800)}\n\n` +
-    "╭─〔 ⚠️ *MENÚ RECORTADO* 〕\n" +
-    "┃ Hay demasiados comandos para un solo mensaje.\n" +
-    `┃ Usa ${primaryPrefix}menu para ver lo principal.\n` +
-    "╰────────────⬣"
+    "> ⚠️ Menú recortado.\n" +
+    `> Usa ${primaryPrefix}menu para ver lo principal.`
   );
 }
 
@@ -604,7 +545,6 @@ function buildCategoryRows(categoryNames, categories, primaryPrefix) {
     const label = normalizeCategoryLabel(category);
     const items = categories[category] || [];
     const count = items.length;
-    const highlight = getCategoryHighlight(items, primaryPrefix);
     const preview = items
       .slice(0, 3)
       .map((item) => `${primaryPrefix}${item.name}`)
@@ -613,7 +553,7 @@ function buildCategoryRows(categoryNames, categories, primaryPrefix) {
     return {
       header: icon,
       title: label,
-      description: `${count} cmds · ${highlight.mainAccess}${preview ? ` · ${preview}` : ""}`.slice(0, 72),
+      description: `${count} cmds${preview ? ` · ${preview}` : ""}`.slice(0, 72),
       id: `${primaryPrefix}menu ${category}`,
     };
   });
@@ -630,87 +570,28 @@ function buildCategorySections(categoryNames, categories, primaryPrefix) {
   const pick = (key) => rowByCategory.get(normalizeCategoryKey(key));
   const sections = [];
 
-  const mainRows = [
-    pick("menu"),
-    pick("descargas"),
-    pick("grupos"),
-  ].filter(Boolean);
+  const mainRows = [pick("menu"), pick("descargas"), pick("grupos")].filter(Boolean);
   if (mainRows.length) {
-    sections.push({
-      title: "⚡ MENU PRINCIPAL",
-      highlight_label: "POPULAR",
-      rows: mainRows,
-    });
+    sections.push({ title: "MENU PRINCIPAL", rows: mainRows });
   }
 
   sections.push({
-    title: "🚀 ACCESOS RAPIDOS",
-    highlight_label: "FAST",
+    title: "ACCESOS RAPIDOS",
     rows: [
-      {
-        header: "⚡",
-        title: "Speedtest visual",
-        description: "Mide la red del host con imagen.",
-        id: `${primaryPrefix}speedtest rapido`,
-      },
-      {
-        header: "📊",
-        title: "Estado del bot",
-        description: "Abre status y recursos del bot.",
-        id: `${primaryPrefix}status`,
-      },
-      {
-        header: "🛡️",
-        title: "Panel de grupos",
-        description: "Moderacion, horarios y protecciones.",
-        id: `${primaryPrefix}menugrupo`,
-      },
+      { header: "⚡", title: "Speedtest visual", description: "Mide la red del host.", id: `${primaryPrefix}speedtest rapido` },
+      { header: "📊", title: "Estado del bot", description: "Status y recursos.", id: `${primaryPrefix}status` },
+      { header: "🛡️", title: "Panel de grupos", description: "Moderacion y control.", id: `${primaryPrefix}menugrupo` },
     ],
   });
 
-  const gameRows = [
-    pick("juegos"),
-    pick("freefire"),
-    pick("economia"),
-  ].filter(Boolean);
-  if (gameRows.length) {
-    sections.push({
-      title: "🎮 ENTRETENIMIENTO",
-      highlight_label: "FUN",
-      rows: gameRows,
-    });
-  }
+  const gameRows = [pick("juegos"), pick("freefire"), pick("economia")].filter(Boolean);
+  if (gameRows.length) sections.push({ title: "ENTRETENIMIENTO", rows: gameRows });
 
-  const toolRows = [
-    pick("ia"),
-    pick("herramientas"),
-    pick("media"),
-    pick("filtros"),
-    pick("interacciones"),
-    pick("anime"),
-  ].filter(Boolean);
-  if (toolRows.length) {
-    sections.push({
-      title: "🤖 IA Y TOOLS",
-      highlight_label: "SMART",
-      rows: toolRows,
-    });
-  }
+  const toolRows = [pick("ia"), pick("herramientas"), pick("media"), pick("filtros"), pick("interacciones"), pick("anime")].filter(Boolean);
+  if (toolRows.length) sections.push({ title: "IA Y TOOLS", rows: toolRows });
 
-  const adminRows = [
-    pick("sistema"),
-    pick("subbots"),
-    pick("admin"),
-    pick("owner"),
-    pick("vip"),
-  ].filter(Boolean);
-  if (adminRows.length) {
-    sections.push({
-      title: "🛡️ ADMINISTRACION",
-      highlight_label: "CONTROL",
-      rows: adminRows,
-    });
-  }
+  const adminRows = [pick("sistema"), pick("subbots"), pick("admin"), pick("owner"), pick("vip")].filter(Boolean);
+  if (adminRows.length) sections.push({ title: "ADMINISTRACION", rows: adminRows });
 
   if (!sections.length) {
     return [{ title: "Categorias del bot", rows: buildCategoryRows(categoryNames, categories, primaryPrefix) }];
@@ -724,54 +605,34 @@ function buildMenuButtons(primaryPrefix, categoryNames, categories) {
 
   const flowButton = {
     buttonId: "menu_action_select",
-    buttonText: {
-      displayText: "✦ ABRIR HUB",
-    },
+    buttonText: { displayText: "ABRIR MENU" },
     type: 4,
     nativeFlowInfo: {
       name: "single_select",
-      paramsJson: JSON.stringify({
-        title: "✦ JM Bot • Command Hub",
-        sections,
-      }),
+      paramsJson: JSON.stringify({ title: "JM Bot", sections }),
     },
   };
 
   const quickButtons = [
-    {
-      buttonId: `${primaryPrefix}speedtest rapido`,
-      buttonText: { displayText: "✦ SPEEDTEST" },
-      type: 1,
-    },
-    {
-      buttonId: `${primaryPrefix}menugrupo`,
-      buttonText: { displayText: "✦ GRUPOS" },
-      type: 1,
-    },
+    { buttonId: `${primaryPrefix}speedtest rapido`, buttonText: { displayText: "SPEEDTEST" }, type: 1 },
+    { buttonId: `${primaryPrefix}menugrupo`, buttonText: { displayText: "GRUPOS" }, type: 1 },
   ];
 
   return [flowButton, ...quickButtons];
 }
 
 function buildMenuLandingText(menuContext, settings, uptime, totalCategories, totalCommands, prefixLabel) {
-  const githubLink = getGithubLink(settings);
   return [
-    "╭────────────────────────────────────────────╮",
-    `│   ${stylizeSignature("JM Bot")} ${stylizeSubtitle("command hub")}   │`,
-    "├────────────────────────────────────────────┤",
-    `│ 👋 Hola, *${menuContext.botLine || settings?.botName || "usuario"}*`,
-    "│ Pulsa *ABRIR HUB* para desplegar categorias.",
-    "├────────────────────────────────────────────┤",
-    `│ 👤 Vista: *${menuContext.subtitle}*`,
-    `│ 🧷 Prefijos: *${prefixLabel}*`,
-    `│ 🤖 Bot: *${menuContext.title}*`,
-    `│ 👑 Owner: *${settings?.ownerName || "Owner"}*`,
-    `│ ⏱️ Runtime: *${uptime}*`,
-    `│ 🗂️ Categorías: *${totalCategories}*`,
-    `│ ⚙️ Comandos: *${totalCommands}*`,
-    `│ ⚡ Red: *${getPrimaryPrefix(settings)}speedtest rapido*`,
-    "├────────────────────────────────────────────┤",
-    "╰────────────────────────────────────────────╯",
+    `> ${stylizeWord("JM BOT")}`,
+    DIVIDER,
+    "",
+    `> Hola, ${menuContext.botLine || settings?.botName || "usuario"}`,
+    "> Pulsa ABRIR MENU para ver categorias.",
+    "",
+    `> Owner: ${settings?.ownerName || "Owner"}`,
+    `> Prefijo: ${prefixLabel}`,
+    `> Runtime: ${uptime}`,
+    `> Categorías: ${totalCategories} · Comandos: ${totalCommands}`,
   ].join("\n");
 }
 
@@ -779,77 +640,30 @@ function buildCategoryMenuText(category, commands, primaryPrefix, settings = {})
   const icon = getCategoryIcon(category);
   const label = normalizeCategoryLabel(category);
   const count = commands.length;
-  const highlight = getCategoryHighlight(commands, primaryPrefix);
-  const commandBlocks = chunkRows(commands, 8).map((chunk, index) => {
-    const pageLabel =
-      commands.length > 8
-        ? `Page ${index + 1}/${Math.ceil(commands.length / 8)}`
-        : "Page 1/1";
-    const title = `╭──────── ${icon} *${label}* • ${pageLabel} ────────╮`;
-
-    const lines = [title];
+  const commandBlocks = chunkRows(commands, 10).map((chunk, index) => {
+    const pageLabel = commands.length > 10 ? ` (${index + 1}/${Math.ceil(commands.length / 10)})` : "";
+    const lines = [`> ${icon} ${label}${pageLabel} — ${count} comandos`, DIVIDER, ""];
 
     for (const [itemIndex, item] of chunk.entries()) {
-      const aliasText = item.aliases?.length
-        ? `Alias: ${item.aliases.slice(0, 3).join(", ")}`
-        : "";
-      const slot = String(index * 8 + itemIndex + 1).padStart(2, "0");
-      lines.push(`│ ${slot}. *${primaryPrefix}${item.name}*  [${item.access}]`);
-      lines.push(`│     ${item.description || "Comando disponible del bot."}`);
-      if (aliasText) {
-        lines.push(`│     ${aliasText}`);
-      }
-      lines.push("│");
+      const aliasText = item.aliases?.length ? ` — alias: ${item.aliases.slice(0, 3).join(", ")}` : "";
+      lines.push(`> ✦ ${primaryPrefix}${stylizeWord(item.name)} [${item.access}]`);
+      lines.push(`    ${item.description || "Comando disponible del bot."}${aliasText}`);
+      lines.push("");
     }
 
-    if (lines[lines.length - 1] === "│") {
-      lines.pop();
-    }
+    if (lines[lines.length - 1] === "") lines.pop();
 
-    lines.push("╰────────────────────────────────────────────╯");
     return lines.join("\n");
   });
 
-  return [
-    "╭────────────────────────────────────────────╮",
-    `│ ${icon} *${label}*`,
-    "├────────────────────────────────────────────┤",
-    `│ ${getCategoryDescription(category, count)}`,
-    `│ 📌 Commands: *${count}*`,
-    `│ 🔓 Public: *${highlight.accessCounts.PUBLICO}*`,
-    `│ 🛡️ Admin: *${highlight.accessCounts.ADMIN}*`,
-    `│ 👑 Owner: *${highlight.accessCounts.OWNER}*`,
-    highlight.quick.length
-      ? `│ ⚡ Quick Start: ${highlight.quick.join(" • ")}`
-      : "│ ⚡ Quick Start: category ready to use",
-    "│ Usa prefijo + comando para ejecutar.",
-    "╰────────────────────────────────────────────╯",
-    "",
-    ...commandBlocks,
-    "",
-    buildFooter(primaryPrefix, settings),
-  ].join("\n");
+  return [...commandBlocks, "", buildFooter(primaryPrefix)].join("\n");
 }
 
 async function sendInteractiveMenu(sock, from, quoted, payload, fallbackText) {
   try {
-    return await sock.sendMessage(
-      from,
-      {
-        ...payload,
-        ...global.channelInfo,
-      },
-      quoted
-    );
+    return await sock.sendMessage(from, { ...payload, ...global.channelInfo }, quoted);
   } catch {
-    return await sock.sendMessage(
-      from,
-      {
-        text: fallbackText,
-        ...global.channelInfo,
-      },
-      quoted
-    );
+    return await sock.sendMessage(from, { text: fallbackText, ...global.channelInfo }, quoted);
   }
 }
 
@@ -864,16 +678,9 @@ export default {
 
       if (!comandos) {
         await react(sock, msg, "❌");
-
         return await sock.sendMessage(
           from,
-          {
-            text:
-              "╭━━〔 ❌ *ERROR MENÚ* 〕━━⬣\n" +
-              "┃ No se encontró la lista de comandos.\n" +
-              "╰━━━━━━━━━━━━━━━━━━━━⬣",
-            ...global.channelInfo,
-          },
+          { text: "❌ No se encontró la lista de comandos.", ...global.channelInfo },
           { quoted: msg }
         );
       }
@@ -899,31 +706,19 @@ export default {
 
       if (requestedCategory && requestedCategory !== "menu" && categories[requestedCategory]) {
         const commandList = categories[requestedCategory];
-        const categoryText = buildCategoryMenuText(
-          requestedCategory,
-          commandList,
-          primaryPrefix,
-          settings
-        );
+        const categoryText = buildCategoryMenuText(requestedCategory, commandList, primaryPrefix, settings);
         const categoryImageBuffer = getCategoryImageBuffer(requestedCategory);
 
         if (categoryImageBuffer) {
           await sock.sendMessage(
             from,
-            {
-              image: categoryImageBuffer,
-              caption: makeSingleCaption(categoryText, primaryPrefix),
-              ...global.channelInfo,
-            },
+            { image: categoryImageBuffer, caption: makeSingleCaption(categoryText, primaryPrefix), ...global.channelInfo },
             { quoted: msg }
           );
         } else {
           await sock.sendMessage(
             from,
-            {
-              text: makeSingleCaption(categoryText, primaryPrefix),
-              ...global.channelInfo,
-            },
+            { text: makeSingleCaption(categoryText, primaryPrefix), ...global.channelInfo },
             { quoted: msg }
           );
         }
@@ -938,31 +733,19 @@ export default {
         totalCategories: categoryNames.length,
         totalCommands,
         prefixLabel,
-        menuTitle: menuContext.title,
-        menuSubtitle: menuContext.subtitle,
         botLine: menuContext.botLine,
       });
 
       const textParts = [
         topPanel,
         buildCategoryIndex(categoryNames, categories),
-        ...categoryNames.map((category) =>
-          buildCategoryBlock(category, categories[category], primaryPrefix)
-        ),
-        buildFooter(primaryPrefix, settings),
+        ...categoryNames.map((category) => buildCategoryBlock(category, categories[category], primaryPrefix)),
+        buildFooter(primaryPrefix),
       ];
 
       const fullCaption = textParts.join("\n\n").trim();
       const finalCaption = makeSingleCaption(fullCaption, primaryPrefix);
-      const landingText = buildMenuLandingText(
-        menuContext,
-        settings,
-        uptime,
-        categoryNames.length,
-        totalCommands,
-        prefixLabel
-      );
-
+      const landingText = buildMenuLandingText(menuContext, settings, uptime, categoryNames.length, totalCommands, prefixLabel);
       const buttons = buildMenuButtons(primaryPrefix, categoryNames, categories);
 
       try {
@@ -981,11 +764,7 @@ export default {
           payload.text = landingText;
         }
 
-        await sock.sendMessage(
-          from,
-          payload,
-          { quoted: msg }
-        );
+        await sock.sendMessage(from, payload, { quoted: msg });
       } catch {
         await sendInteractiveMenu(
           sock,
@@ -1000,12 +779,8 @@ export default {
               {
                 name: "single_select",
                 buttonParamsJson: JSON.stringify({
-                  title: "☷ SELECT MENU",
-                  sections: buildCategorySections(
-                    categoryNames,
-                    categories,
-                    primaryPrefix
-                  ),
+                  title: "SELECT MENU",
+                  sections: buildCategorySections(categoryNames, categories, primaryPrefix),
                 }),
               },
             ],
@@ -1017,19 +792,10 @@ export default {
       await react(sock, msg, "✅");
     } catch (error) {
       console.error("MENU ERROR:", error);
-
       await react(sock, msg, "❌");
-
       await sock.sendMessage(
         from,
-        {
-          text:
-            "╭━━〔 ❌ *ERROR MENÚ* 〕━━⬣\n" +
-            "┃ No se pudo mostrar el menú.\n" +
-            `┃ ${String(error?.message || "Error desconocido")}\n` +
-            "╰━━━━━━━━━━━━━━━━━━━━⬣",
-          ...global.channelInfo,
-        },
+        { text: `❌ No se pudo mostrar el menú.\n${String(error?.message || "Error desconocido")}`, ...global.channelInfo },
         { quoted: msg }
       );
     }
