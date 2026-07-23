@@ -69,6 +69,7 @@ export default {
       }
 
       // 🚫 No expulsar a otro admin
+    console.log("🔍 PARTICIPANTE KICK:", JSON.stringify(participant, null, 2));
       if (isParticipantAdmin(participant)) {
         return await sock.sendMessage(from, {
           text: "🛡️ *No puedes expulsar a otro administrador.*",

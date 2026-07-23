@@ -623,16 +623,22 @@ function buildMenuButtons(primaryPrefix, categoryNames, categories) {
 
 function buildMenuLandingText(menuContext, settings, uptime, totalCategories, totalCommands, prefixLabel) {
   return [
-    `> ${stylizeWord("JM BOT")}`,
-    DIVIDER,
-    "",
-    `> Hola, ${menuContext.botLine || settings?.botName || "usuario"}`,
-    "> Pulsa ABRIR MENU para ver categorias.",
-    "",
-    `> Owner: ${settings?.ownerName || "Owner"}`,
-    `> Prefijo: ${prefixLabel}`,
-    `> Runtime: ${uptime}`,
-    `> Categorías: ${totalCategories} · Comandos: ${totalCommands}`,
+    "╭─────────────────╮",
+    "│   JM Bot  │",
+    "├─────────────────┤",
+    `│ 👋 Hola, *${menuContext.botLine || settings?.botName || "usuario"}*`,
+    "│ Pulsa *JM Bot* para desplegar categorias.",
+    "├─────────────────┤",
+    `│ 👤 Vista: *${menuContext.subtitle}*`,
+    `│ 🧷 Prefijos: *${prefixLabel}*`,
+    `│ 🤖 Bot: *${menuContext.title}*`,
+    `│ 👑 Owner: *${settings?.ownerName || "Owner"}*`,
+    `│ ⏱️ Runtime: *${uptime}*`,
+    `│ 🗂️ Categorías: *${totalCategories}*`,
+    `│ ⚙️ Comandos: *${totalCommands}*`,
+    `│ ⚡ Red: *${getPrimaryPrefix(settings)}speedtest rapido*`,
+    "╰─────────────────╯",
+    `> © ${settings?.ownerName || "JM"}`,
   ].join("\n");
 }
 
@@ -750,7 +756,6 @@ export default {
 
       try {
         const payload = {
-          footer: `© ${settings?.ownerName || "JM Bot"}`,
           buttons,
           headerType: 1,
           ...global.channelInfo,
