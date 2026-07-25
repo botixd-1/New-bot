@@ -198,7 +198,15 @@ export default {
         metadataParticipant,
         participant
       );
-      const number = normalizeJidDigits(participant);
+      const realNumberSource =
+        (metadataParticipant?.jid && !String(metadataParticipant.jid).endsWith("@lid")
+          ? metadataParticipant.jid
+          : "") ||
+        metadataParticipant?.phoneNumber ||
+        metadataParticipant?.pn ||
+        metadataParticipant?.phone_number ||
+        participant;
+      const number = normalizeJidDigits(realNumberSource);
       if (!number || isAllowed(number, config) || ownerNumbers.includes(number) || number === botNumber) {
         continue;
       }
