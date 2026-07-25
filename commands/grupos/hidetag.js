@@ -1,7 +1,7 @@
 import { getParticipantMentionJid } from "../../lib/group-compat.js";
 
 export default {
-  command: ["hidetag"],
+  command: ["hidetag", "tag"],
   category: "grupo",
   description: "Etiqueta a todos sin listar",
   groupOnly: true,
