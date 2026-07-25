@@ -91,7 +91,12 @@ export default {
 
     let metadata = null;
     try {
-      metadata = await sock.groupMetadata(update.id);
+      metadata = await Promise.race([
+        sock.groupMetadata(update.id),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error("groupMetadata timeout")), 6000)
+        ),
+      ]);
     } catch {}
 
     const actorCandidate = getActorCandidate(update);

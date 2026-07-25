@@ -12,7 +12,6 @@ const DB_DIR = path.join(process.cwd(), "database");
 const FILE = path.join(DB_DIR, "antilink.json");
 const WARNS_FILE = path.join(DB_DIR, "antilink_warns.json");
 const LOG_FILE = path.join(DB_DIR, "antilink_logs.json");
-const MAX_WARNS = 3;
 const MAX_LOGS_PER_GROUP = 200;
 
 if (!fs.existsSync(DB_DIR)) {
@@ -58,6 +57,11 @@ function normalizeConfig(value = {}) {
       : !allowWhatsappLegacy,
     blockYoutubeLinks: source.blockYoutubeLinks === true,
     blockOtherLinks: source.blockOtherLinks === true,
+    maxWarns: (() => {
+      const n = Number(source.maxWarns);
+      if (!Number.isFinite(n)) return 3;
+      return Math.min(3, Math.max(1, Math.round(n)));
+    })(),
     whitelist: Array.isArray(source.whitelist)
       ? source.whitelist.map((item) => normalizeDomain(item)).filter(Boolean)
       : [],
@@ -318,7 +322,7 @@ export default {
             `*ANTILINK*\n\n` +
             `Estado: *${config.enabled ? "ON" : "OFF"}*\n` +
             `Modo: *${config.mode.toUpperCase()}*\n` +
-            `Avisos antes de expulsar: *${MAX_WARNS}*\n` +
+            `Avisos antes de expulsar: *${config.maxWarns}*\n` +
             `Grupos WhatsApp: *${formatToggle(config.blockWhatsappGroups)}*\n` +
             `Canales WhatsApp: *${formatToggle(config.blockWhatsappChannels)}*\n` +
             `YouTube: *${formatToggle(config.blockYoutubeLinks)}*\n` +
@@ -460,7 +464,7 @@ export default {
           text:
             `✅ *ANTILINK ACTIVADO*\n\n` +
             `🗑️ Cada mensaje con enlaces sera eliminado.\n` +
-            `⚠️ Advertencias: *0/${MAX_WARNS}*\n` +
+            `⚠️ Advertencias: *0/${config.maxWarns}*\n` +
             `🚫 Al tercer enlace, el usuario sera expulsado.\n` +
             `🔐 El bot debe ser administrador para borrar y expulsar.`,
           ...global.channelInfo,
@@ -513,6 +517,31 @@ export default {
         from,
         {
           text: `Modo anti-link actualizado a *${mode.toUpperCase()}*.`,
+          ...global.channelInfo,
+        },
+        quoted
+      );
+    }
+
+    if (action === "warns" || action === "avisos") {
+      const n = Number(args[1]);
+      if (!Number.isFinite(n) || n < 1 || n > 3) {
+        return sock.sendMessage(
+          from,
+          {
+            text: "Usa: .antilink warns 1  |  .antilink warns 2  |  .antilink warns 3",
+            ...global.channelInfo,
+          },
+          quoted
+        );
+      }
+
+      config.maxWarns = Math.round(n);
+      saveStore();
+      return sock.sendMessage(
+        from,
+        {
+          text: `✅ Avisos antes de expulsar actualizado a *${config.maxWarns}*.`,
           ...global.channelInfo,
         },
         quoted
@@ -799,7 +828,7 @@ export default {
                       `• Usuario: ${sender}\n` +
                       `• Link: ${linkText}\n` +
                       `• Tipo: ${String(entry?.linkType || "other")}\n` +
-                      `• Warns: ${warns}/${MAX_WARNS}\n` +
+                      `• Warns: ${warns}/${config.maxWarns}\n` +
                       `• Fecha: ${when}`
                     );
                   })
@@ -855,7 +884,7 @@ export default {
     const mentionJids = mentionJid ? [mentionJid] : [];
     const senderLog = String(mentionJid || sender || "").trim();
 
-    if (config.mode === "kick" && currentWarns >= MAX_WARNS && esBotAdmin) {
+    if (config.mode === "kick" && currentWarns >= config.maxWarns && esBotAdmin) {
       try {
         const removeResult = await runGroupParticipantAction(
           sock,
@@ -882,7 +911,7 @@ export default {
         await sock.sendMessage(from, {
           text:
             `🚫 *ANTILINK*\n` +
-            `${mentionText} llego a *${MAX_WARNS}/${MAX_WARNS}* advertencias.\n` +
+            `${mentionText} llego a *${config.maxWarns}/${config.maxWarns}* advertencias.\n` +
             `🔗 Enlace bloqueado: *${blockedLink.domain || blockedLink.raw}*\n` +
             `✅ Fue expulsado del grupo.`,
           mentions: mentionJids,
@@ -893,7 +922,7 @@ export default {
     }
 
     if (config.mode === "kick") {
-      if (currentWarns >= MAX_WARNS) {
+      if (currentWarns >= config.maxWarns) {
         appendAntilinkLog(from, {
           sender: senderLog,
           link: blockedLink.raw,
@@ -906,7 +935,7 @@ export default {
         await sock.sendMessage(from, {
           text:
             `🚫 *ANTILINK*\n` +
-            `${mentionText} llego a *${MAX_WARNS}/${MAX_WARNS}* advertencias.\n` +
+            `${mentionText} llego a *${config.maxWarns}/${config.maxWarns}* advertencias.\n` +
             `🔗 Enlace bloqueado: *${blockedLink.domain || blockedLink.raw}*\n` +
             `⚠️ No pude expulsarlo. Verifica si el bot es admin.`,
           mentions: mentionJids,
@@ -926,10 +955,10 @@ export default {
       });
       await sock.sendMessage(from, {
         text:
-          `⚠️ *ANTILINK AVISO ${currentWarns}/${MAX_WARNS}*\n` +
+          `⚠️ *ANTILINK AVISO ${currentWarns}/${config.maxWarns}*\n` +
           `${mentionText}, no envies este tipo de enlace.\n` +
           `🔗 Detectado: *${blockedLink.domain || blockedLink.raw}*\n` +
-          `📌 A la advertencia *${MAX_WARNS}* seras expulsado.`,
+          `📌 A la advertencia *${config.maxWarns}* seras expulsado.`,
         mentions: mentionJids,
 
       });

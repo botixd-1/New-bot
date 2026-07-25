@@ -3538,6 +3538,11 @@ function recordFatalRuntimeError(kind, payload) {
     fatalRuntimeErrors.shift();
   }
 
+  console.error(
+    `[FATAL_GUARD] (${fatalRuntimeErrors.length}/${FATAL_ERROR_THRESHOLD}) ${kind} contado a las ${new Date(now).toISOString()}:`,
+    payload?.stack || payload?.message || payload
+  );
+
   if (fatalRuntimeErrors.length < FATAL_ERROR_THRESHOLD) {
     return;
   }
@@ -3743,6 +3748,22 @@ function logBotEvent(value, level = "info", message = "", metadata = {}) {
   console.log(`${deco} ${timeText} ${tagText} ${chalk.redBright("[INFO ]")} ${chalk.whiteBright(`✦ ${messageText}${extraText}`)}`);
 }
 
+const MAX_STORE_MESSAGES_PER_CHAT = 50;
+
+function trimStoreMessages(store) {
+  if (!store?.messages) return;
+  for (const jid of Object.keys(store.messages)) {
+    const list = store.messages[jid];
+    if (!list?.array || list.array.length <= MAX_STORE_MESSAGES_PER_CHAT) continue;
+    const toRemove = list.array.slice(0, list.array.length - MAX_STORE_MESSAGES_PER_CHAT);
+    for (const item of toRemove) {
+      try {
+        list.remove(item);
+      } catch {}
+    }
+  }
+}
+
 function createStoreForBot(botId) {
   if (typeof makeInMemoryStore !== "function") return null;
 
@@ -3755,9 +3776,14 @@ function createStoreForBot(botId) {
     }
   } catch {}
 
+  try {
+    trimStoreMessages(store);
+  } catch {}
+
   if (store?.writeToFile) {
     const timer = setInterval(() => {
       try {
+        trimStoreMessages(store);
         store.writeToFile(storeFile);
       } catch {}
     }, 10000);
