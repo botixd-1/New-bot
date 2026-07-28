@@ -643,23 +643,19 @@ function buildCategoryMenuText(category, commands, primaryPrefix, settings = {})
   const icon = getCategoryIcon(category);
   const label = normalizeCategoryLabel(category);
   const count = commands.length;
-  const commandBlocks = chunkRows(commands, 10).map((chunk, index) => {
-    const pageLabel = commands.length > 10 ? ` (${index + 1}/${Math.ceil(commands.length / 10)})` : "";
-    const lines = [`> ${icon} ${label}${pageLabel} — ${count} comandos`, DIVIDER, ""];
 
-    for (const [itemIndex, item] of chunk.entries()) {
-      const aliasText = item.aliases?.length ? ` — alias: ${item.aliases.slice(0, 3).join(", ")}` : "";
-      lines.push(`> ✦ ${primaryPrefix}${stylizeWord(item.name)} [${item.access}]`);
-      lines.push(`    ${item.description || "Comando disponible del bot."}${aliasText}`);
-      lines.push("");
-    }
+  const lines = [`> ${icon} ${label} — ${count} comandos`, DIVIDER, ""];
 
-    if (lines[lines.length - 1] === "") lines.pop();
+  for (const item of commands) {
+    const aliasText = item.aliases?.length ? ` — alias: ${item.aliases.slice(0, 3).join(", ")}` : "";
+    lines.push(`> ✦ ${primaryPrefix}${stylizeWord(item.name)} [${item.access}]`);
+    lines.push(`    ${item.description || "Comando disponible del bot."}${aliasText}`);
+    lines.push("");
+  }
 
-    return lines.join("\n");
-  });
+  if (lines[lines.length - 1] === "") lines.pop();
 
-  return [...commandBlocks, "", buildFooter(primaryPrefix)].join("\n");
+  return [lines.join("\n"), "", buildFooter(primaryPrefix)].join("\n");
 }
 
 async function sendInteractiveMenu(sock, from, quoted, payload, fallbackText) {

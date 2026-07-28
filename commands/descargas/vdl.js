@@ -3,7 +3,7 @@ import path from "path";
 import os from "os";
 import axios from "axios";
 import * as baileys from "@dvyer/baileys";
-import { randomUUID } from "crypto";
+import { randomUUID, createHash } from "crypto";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import { createScheduledJsonStore } from "../../lib/json-store.js";
@@ -23,6 +23,40 @@ function setSavedListUrl(url) {
   if (!savedListsStore.state.chats) savedListsStore.state.chats = {};
   savedListsStore.state.chats[GLOBAL_LIST_KEY] = url;
   savedListsStore.scheduleSave();
+}
+
+const IMAGES_DIR = path.join(process.cwd(), "database", "vdl-images");
+const vdlImagesFile = path.join(process.cwd(), "database", "vdl-images.json");
+const vdlImagesStore = createScheduledJsonStore(vdlImagesFile, () => ({ images: {} }));
+
+function getImageKey(url = "") {
+  return createHash("sha1").update(String(url || "")).digest("hex");
+}
+
+async function ensureImagesDir() {
+  await fsp.mkdir(IMAGES_DIR, { recursive: true }).catch(() => {});
+}
+
+async function storeImageForUrl(url, buffer) {
+  await ensureImagesDir();
+  const key = getImageKey(url);
+  const fileName = `${key}.jpg`;
+  await fsp.writeFile(path.join(IMAGES_DIR, fileName), buffer);
+  if (!vdlImagesStore.state.images) vdlImagesStore.state.images = {};
+  vdlImagesStore.state.images[key] = fileName;
+  vdlImagesStore.scheduleSave();
+}
+
+async function getStoredImageBuffer(url) {
+  const key = getImageKey(url);
+  const fileName = vdlImagesStore.state.images?.[key];
+  if (!fileName) return null;
+
+  try {
+    return await fsp.readFile(path.join(IMAGES_DIR, fileName));
+  } catch {
+    return null;
+  }
 }
 
 const execFileAsync = promisify(execFile);
@@ -293,10 +327,11 @@ async function downloadAndSendVideo(sock, from, quoted, url, referer = "", cooki
 
     await sock.sendMessage(from, payload, quoted);
 
-    if (attachedImage) {
+    const imageToSend = attachedImage || (await getStoredImageBuffer(url));
+    if (imageToSend) {
       try {
         await sock.sendMessage(from, {
-          image: attachedImage,
+          image: imageToSend,
           ...global.channelInfo,
         });
       } catch {}
@@ -427,6 +462,63 @@ export default {
       return sock.sendMessage(
         from,
         { text: "✅ Lista guardada para este chat. Ahora puedes usar: .vdl lista", ...global.channelInfo },
+        quoted
+      );
+    }
+
+    if (first.toLowerCase() === "setimagen" || first.toLowerCase() === "setimg") {
+      const indexArg = String(args[1] || "").trim();
+
+      if (!/^\d+$/.test(indexArg)) {
+        return sock.sendMessage(
+          from,
+          {
+            text:
+              "Uso: responde a una imagen con .vdl setimagen <numero>\n" +
+              "Ejemplo: .vdl setimagen 2",
+            ...global.channelInfo,
+          },
+          quoted
+        );
+      }
+
+      const items = getPendingList(from);
+      if (!items) {
+        return sock.sendMessage(
+          from,
+          { text: "No hay ninguna lista activa. Primero usa: .vdl lista <enlace>", ...global.channelInfo },
+          quoted
+        );
+      }
+
+      const idx = parseInt(indexArg, 10) - 1;
+      const selected = items[idx];
+
+      if (!selected) {
+        return sock.sendMessage(
+          from,
+          { text: `Ese número no existe en la lista (1-${items.length}).`, ...global.channelInfo },
+          quoted
+        );
+      }
+
+      const imageBuffer = await resolveAttachedImage(msg);
+      if (!imageBuffer) {
+        return sock.sendMessage(
+          from,
+          { text: "⚠️ Responde a una *imagen* junto con este comando.", ...global.channelInfo },
+          quoted
+        );
+      }
+
+      await storeImageForUrl(selected.url, imageBuffer);
+
+      return sock.sendMessage(
+        from,
+        {
+          text: `✅ Imagen guardada para *${selected.title}* (#${idx + 1}).\nSe enviará automáticamente cada vez que alguien descargue este video.`,
+          ...global.channelInfo,
+        },
         quoted
       );
     }

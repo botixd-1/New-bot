@@ -23,7 +23,7 @@
   "subbots": [
     {
       "slot": 1,
-      "enabled": true,
+      "enabled": false,
       "label": "SUBBOT1",
       "name": "Fsociety-V1 Subbot 1",
       "authFolder": "fsociety-botV1-subbot",
@@ -31,7 +31,7 @@
       "requesterNumber": "",
       "requesterJid": "",
       "requestedAt": 0,
-      "releasedAt": 0,
+      "releasedAt": 1785028794492,
       "subbotMode": "normal",
       "sessionExpiresAt": 0
     },
