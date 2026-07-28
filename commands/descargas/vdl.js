@@ -6,8 +6,24 @@ import * as baileys from "@dvyer/baileys";
 import { randomUUID } from "crypto";
 import { execFile } from "child_process";
 import { promisify } from "util";
+import { createScheduledJsonStore } from "../../lib/json-store.js";
 
 const { downloadContentFromMessage } = baileys;
+
+const savedListsFile = path.join(process.cwd(), "database", "vdl-saved-lists.json");
+const savedListsStore = createScheduledJsonStore(savedListsFile, () => ({ chats: {} }));
+
+const GLOBAL_LIST_KEY = "global";
+
+function getSavedListUrl() {
+  return savedListsStore.state.chats?.[GLOBAL_LIST_KEY] || "";
+}
+
+function setSavedListUrl(url) {
+  if (!savedListsStore.state.chats) savedListsStore.state.chats = {};
+  savedListsStore.state.chats[GLOBAL_LIST_KEY] = url;
+  savedListsStore.scheduleSave();
+}
 
 const execFileAsync = promisify(execFile);
 
@@ -368,15 +384,51 @@ export default {
     }
 
     if (first.toLowerCase() === "lista" || first.toLowerCase() === "list") {
-      const playlistUrl = String(args[1] || "").trim();
-      if (!playlistUrl || !isValidUrl(playlistUrl)) {
+      const givenUrl = String(args[1] || "").trim();
+
+      if (givenUrl) {
+        if (!isValidUrl(givenUrl)) {
+          return sock.sendMessage(
+            from,
+            { text: "Uso: .vdl lista <enlace de la playlist>", ...global.channelInfo },
+            quoted
+          );
+        }
+        setSavedListUrl(givenUrl);
+        return handleList(sock, from, quoted, givenUrl);
+      }
+
+      const savedUrl = getSavedListUrl();
+      if (!savedUrl) {
         return sock.sendMessage(
           from,
-          { text: "Uso: .vdl lista <enlace de la playlist>", ...global.channelInfo },
+          {
+            text:
+              "No hay ninguna lista guardada en este chat.\n" +
+              "Usa: .vdl lista <enlace> (la próxima vez solo con .vdl lista basta).",
+            ...global.channelInfo,
+          },
           quoted
         );
       }
-      return handleList(sock, from, quoted, playlistUrl);
+      return handleList(sock, from, quoted, savedUrl);
+    }
+
+    if (first.toLowerCase() === "setlista") {
+      const newUrl = String(args[1] || "").trim();
+      if (!newUrl || !isValidUrl(newUrl)) {
+        return sock.sendMessage(
+          from,
+          { text: "Uso: .vdl setlista <enlace de la playlist>", ...global.channelInfo },
+          quoted
+        );
+      }
+      setSavedListUrl(newUrl);
+      return sock.sendMessage(
+        from,
+        { text: "✅ Lista guardada para este chat. Ahora puedes usar: .vdl lista", ...global.channelInfo },
+        quoted
+      );
     }
 
     if (/^\d+$/.test(first)) {
@@ -403,7 +455,17 @@ export default {
         );
       }
 
-      return downloadAndSendVideo(sock, from, quoted, selected.url);
+      const attachedImage = await resolveAttachedImage(msg);
+      return downloadAndSendVideo(
+        sock,
+        from,
+        quoted,
+        selected.url,
+        "",
+        "",
+        selected.title,
+        attachedImage
+      );
     }
 
     if (!isValidUrl(first)) {
