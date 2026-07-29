@@ -78,6 +78,19 @@ const UA =
 
 const pendingLists = new Map();
 
+function stylizeItalic(text = "") {
+  return String(text || "").replace(/[A-Za-z]/g, (ch) => {
+    const code = ch.charCodeAt(0);
+    if (code >= 65 && code <= 90) {
+      return String.fromCodePoint(0x1d608 + (code - 65));
+    }
+    if (code >= 97 && code <= 122) {
+      return String.fromCodePoint(0x1d622 + (code - 97));
+    }
+    return ch;
+  });
+}
+
 function isValidUrl(value = "") {
   try {
     const url = new URL(value);
@@ -373,18 +386,24 @@ async function handleList(sock, from, quoted, playlistUrl) {
   setPendingList(from, items);
 
   const shown = items.slice(0, MAX_LIST_ITEMS_SHOWN);
-  const lines = shown.map((item, index) => `${index + 1}. ${item.title}`);
+  const lines = shown.map((item, index) => `┃🍿➺ ${index + 1}. ${stylizeItalic(item.title)}`);
   const extraNote =
     items.length > MAX_LIST_ITEMS_SHOWN
-      ? `\n\n(Mostrando los primeros ${MAX_LIST_ITEMS_SHOWN} de ${items.length})`
+      ? `\n(Mostrando los primeros ${MAX_LIST_ITEMS_SHOWN} de ${items.length})`
       : "";
+
+  const box =
+    `╭━━━[ 𝙈𝙤𝙫𝙞𝙚𝙨🎬 ]━⬣\n` +
+    `┃ 𝘓𝘪𝘴𝘵𝘢 𝘊𝘢𝘳𝘨𝘢𝘥𝘢 (${items.length} 𝖺𝗋𝖼𝗁𝗂𝗏𝗈𝗌)\n` +
+    `┃┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n` +
+    lines.join("\n") +
+    `\n╰━━━━━━⋆★⋆━━━━━━⬣`;
 
   return sock.sendMessage(
     from,
     {
       text:
-        `📋 *Lista cargada* (${items.length} items)\n\n` +
-        lines.join("\n") +
+        box +
         extraNote +
         `\n\nResponde con *.vdl <numero>* para descargar uno.`,
       ...global.channelInfo,
