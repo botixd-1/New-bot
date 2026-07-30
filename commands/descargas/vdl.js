@@ -415,6 +415,8 @@ async function handleList(sock, from, quoted, playlistUrl) {
 export default {
   command: ["vdl", "webdl", "dlvideo"],
   category: "descargas",
+  adminOnly: true,
+  groupOnly: true,
   description: "Descarga video desde cualquier link directo (mp4, m3u8, etc) o carga una lista",
 
   async run({ sock, msg, from, args = [] }) {
