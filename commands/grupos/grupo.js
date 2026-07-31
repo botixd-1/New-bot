@@ -1,4 +1,5 @@
 export default {
+  description: "Abrir/cerrar, abre y cierra el grupo.",
   name: "grupo",
   command: ["grupo"],
   groupOnly: true,

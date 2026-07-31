@@ -334,8 +334,26 @@ async function handleLinkGp(context) {
   return sock.sendMessage(from, { text: `*LINK DEL GRUPO*\n${link}`, ...global.channelInfo }, { quoted: msg });
 }
 
+const MENU_ENTRIES = [
+  { name: "add", description: "Agrega un usuario al grupo mediante su número." },
+  { name: "ban", description: "Banea a un usuario del grupo." },
+  { name: "baneo", description: "Muestra la lista de usuarios baneados." },
+  { name: "desban", description: "Quita el baneo a un usuario." },
+  { name: "info", description: "Muestra la información del grupo." },
+  { name: "linkgp", description: "Obtiene el enlace de invitación del grupo." },
+  { name: "muteall", description: "Silencia a todos los miembros del grupo." },
+  { name: "reportes", description: "Muestra los reportes del grupo." },
+  { name: "reset", description: "Restablece la configuración del grupo." },
+  { name: "setdesc", description: "Cambia la descripción del grupo." },
+  { name: "setfoto", description: "Configura la imagen del mensaje de bienvenida." },
+  { name: "setname", description: "Cambia el nombre del grupo." },
+  { name: "warn", description: "Advierte a un usuario." },
+  { name: "warnings", description: "Muestra las advertencias de un usuario." },
+];
+
 export default {
   name: "comandosimagen",
+  menuEntries: MENU_ENTRIES,
   command: [
     "ban",
     "add",

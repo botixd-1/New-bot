@@ -61,6 +61,7 @@ export default {
   groupOnly: true,
   adminOnly: true,
   category: "grupo",
+  description: "Quita a un usuario del grupo.",
 
   async run({ sock, from, msg, args, m }) {
     try {
