@@ -11122,6 +11122,78 @@ async function iniciarInstanciaBot(config) {
       }
     });
 
+const ANTIDELETE_CACHE_MAX_ENTRIES = 300;
+const ANTIDELETE_CACHE_TTL_MS = 20 * 60 * 1000;
+const ANTIDELETE_MAX_MEDIA_BYTES = 8 * 1024 * 1024;
+const antideleteMessageCache = new Map();
+
+function getAntideleteMediaLength(rawMessage = {}) {
+  try {
+    const m = rawMessage?.message || {};
+    const node =
+      m.imageMessage ||
+      m.videoMessage ||
+      m.audioMessage ||
+      m.documentMessage ||
+      m.stickerMessage;
+    if (!node) return 0;
+    const raw = node.fileLength;
+    if (raw == null) return 0;
+    if (typeof raw === "number") return raw;
+    if (typeof raw === "string") return Number(raw) || 0;
+    if (typeof raw?.toNumber === "function") return raw.toNumber();
+    return Number(raw) || 0;
+  } catch {
+    return 0;
+  }
+}
+
+function pruneAntideleteCache() {
+  const now = Date.now();
+  for (const [key, entry] of antideleteMessageCache) {
+    if (!entry?.expiresAt || now > entry.expiresAt) {
+      antideleteMessageCache.delete(key);
+    }
+  }
+  while (antideleteMessageCache.size > ANTIDELETE_CACHE_MAX_ENTRIES) {
+    const oldestKey = antideleteMessageCache.keys().next().value;
+    if (!oldestKey) break;
+    antideleteMessageCache.delete(oldestKey);
+  }
+}
+
+function cacheMessageForAntidelete(rawMessage) {
+  try {
+    const remoteJid = String(rawMessage?.key?.remoteJid || "").trim();
+    const id = String(rawMessage?.key?.id || "").trim();
+    if (!remoteJid || !id || !remoteJid.endsWith("@g.us")) return;
+
+    // No guardamos archivos pesados: si se borran, no se van a poder
+    // reenviar de todas formas (limite de antidelete), asi que ahorramos
+    // memoria no cacheando su contenido.
+    const mediaLength = getAntideleteMediaLength(rawMessage);
+    if (mediaLength && mediaLength > ANTIDELETE_MAX_MEDIA_BYTES) return;
+
+    antideleteMessageCache.set(`${remoteJid}|${id}`, {
+      message: rawMessage,
+      expiresAt: Date.now() + ANTIDELETE_CACHE_TTL_MS,
+    });
+
+    pruneAntideleteCache();
+  } catch {}
+}
+
+function getCachedMessageForAntidelete(remoteJid, id) {
+  const key = `${remoteJid}|${id}`;
+  const entry = antideleteMessageCache.get(key);
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) {
+    antideleteMessageCache.delete(key);
+    return null;
+  }
+  return entry.message;
+}
+
     boundSock.ev.on("messages.upsert", async ({ messages, type }) => {
       // Ignore late events from a socket that is no longer the active one.
       if (botState.sock !== boundSock) return;
@@ -11136,11 +11208,24 @@ async function iniciarInstanciaBot(config) {
       }
 
       const filteredMessages = [];
+      const revokeEvents = [];
       let hasMessagePayload = false;
 
       for (const raw of messages || []) {
         if (!raw?.message) continue;
         hasMessagePayload = true;
+
+        cacheMessageForAntidelete(raw);
+
+        const protocolType = raw.message?.protocolMessage?.type;
+        const isRevoke =
+          protocolType === 0 ||
+          protocolType === "REVOKE" ||
+          protocolType === baileys?.proto?.Message?.ProtocolMessage?.Type?.REVOKE;
+
+        if (isRevoke && raw.message?.protocolMessage?.key) {
+          revokeEvents.push(raw.message.protocolMessage.key);
+        }
 
         if (shouldProcessUpsertMessage(raw, type)) {
           filteredMessages.push(raw);
@@ -11149,6 +11234,44 @@ async function iniciarInstanciaBot(config) {
 
       if (hasMessagePayload) {
         logMessageUpsertEvent(botState, type, messages?.length || 0);
+      }
+
+      for (const revokedKey of revokeEvents) {
+        try {
+          const remoteJid = String(revokedKey?.remoteJid || "").trim();
+          if (!remoteJid) continue;
+
+          let deletedMessage = null;
+          const cachedRawRevoke = getCachedMessageForAntidelete(remoteJid, revokedKey?.id);
+          if (cachedRawRevoke) {
+            deletedMessage = serializeMessage(cachedRawRevoke);
+          }
+
+          if (!deletedMessage) {
+            try {
+              if (botState.store?.loadMessage && revokedKey?.id) {
+                const stored = await botState.store.loadMessage(remoteJid, revokedKey.id);
+                const normalizedMessage = stored?.message || stored;
+                if (normalizedMessage) {
+                  deletedMessage = serializeMessage({
+                    key: revokedKey,
+                    message: normalizedMessage,
+                  });
+                }
+              }
+            } catch {}
+          }
+
+          await runMessageDeleteHooks(botState, boundSock, {
+            update: { keys: [revokedKey] },
+            deleteKey: revokedKey,
+            from: remoteJid,
+            deletedMessage,
+            isGroup: remoteJid.endsWith("@g.us"),
+          });
+        } catch (err) {
+          console.error(`${getBotTag(botState)} Error procesando revoke (delete for everyone):`, err);
+        }
       }
 
       if (!filteredMessages.length) return;
@@ -11167,18 +11290,25 @@ async function iniciarInstanciaBot(config) {
 
           let deletedMessage = null;
 
-          try {
-            if (botState.store?.loadMessage && key?.id) {
-              const stored = await botState.store.loadMessage(remoteJid, key.id);
-              const normalizedMessage = stored?.message || stored;
-              if (normalizedMessage) {
-                deletedMessage = serializeMessage({
-                  key,
-                  message: normalizedMessage,
-                });
+          const cachedRaw = getCachedMessageForAntidelete(remoteJid, key?.id);
+          if (cachedRaw) {
+            deletedMessage = serializeMessage(cachedRaw);
+          }
+
+          if (!deletedMessage) {
+            try {
+              if (botState.store?.loadMessage && key?.id) {
+                const stored = await botState.store.loadMessage(remoteJid, key.id);
+                const normalizedMessage = stored?.message || stored;
+                if (normalizedMessage) {
+                  deletedMessage = serializeMessage({
+                    key,
+                    message: normalizedMessage,
+                  });
+                }
               }
-            }
-          } catch {}
+            } catch {}
+          }
 
           await runMessageDeleteHooks(botState, boundSock, {
             update,
