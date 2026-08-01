@@ -767,21 +767,42 @@ async function requestDownloadMeta(input, config, options = {}) {
   };
 }
 
+async function fetchDownloadStreamWithRetry(finalUrl) {
+  const TRANSIENT_STATUSES = [502, 503, 504];
+  const MAX_RETRIES = 4;
+  const RETRY_DELAY_MS = 2000;
+
+  let response = null;
+
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    response = await axios.get(finalUrl, {
+      responseType: "stream",
+      timeout: REQUEST_TIMEOUT,
+      maxRedirects: 5,
+      headers: withDvyerApiKeyHeader({
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122 Safari/537.36",
+        Accept: "*/*",
+        Referer: `${apiBaseLabel()}/`,
+      }),
+      validateStatus: () => true,
+    });
+
+    if (!TRANSIENT_STATUSES.includes(response.status) || attempt === MAX_RETRIES) {
+      break;
+    }
+
+    response.data?.destroy?.();
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS * attempt));
+  }
+
+  return response;
+}
+
 async function downloadAbsoluteFile(downloadUrl, outputPath, maxFileBytes = MAX_FILE_BYTES) {
   const finalUrl = appendDvyerApiKeyToUrl(downloadUrl);
 
-  const response = await axios.get(finalUrl, {
-    responseType: "stream",
-    timeout: REQUEST_TIMEOUT,
-    maxRedirects: 5,
-    headers: withDvyerApiKeyHeader({
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122 Safari/537.36",
-      Accept: "*/*",
-      Referer: `${apiBaseLabel()}/`,
-    }),
-    validateStatus: () => true,
-  });
+  const response = await fetchDownloadStreamWithRetry(finalUrl);
 
   if (response.status >= 400) {
     const errorText = await readStreamToText(response.data).catch(() => "");

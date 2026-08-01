@@ -557,13 +557,18 @@ function pickDownloadUrl(data, baseUrl) {
   return candidates[0] || "";
 }
 
-async function resolveInputToUrl(input) {
+function extractTitleHint(text = "") {
+  const match = String(text || "").match(/➠\s*Titulo:\s*(.+)/i);
+  return match ? cleanText(match[1]) : "";
+}
+
+async function resolveInputToUrl(input, titleHint = "") {
   const directUrl = extractYouTubeUrl(input);
 
   if (directUrl) {
     return {
       url: directUrl,
-      title: "YouTube M4A",
+      title: titleHint || "YouTube M4A",
       thumbnail: "",
       duration: 0,
       author: "",
@@ -893,7 +898,6 @@ function buildPreviewCaption(data = {}) {
 
   return [
     "╭━━━〔 🎧 *MÚSICA LISTA* 〕━━━⬣",
-    `┃ 🎵 *${title}*`,
     author ? `┃ 👤 ${author}` : null,
     duration ? `┃ ⏱️ ${duration}` : null,
     audioLine ? `┃ 💿 ${audioLine}` : null,
@@ -1038,7 +1042,8 @@ export default {
         );
       }
 
-      const resolved = await resolveInputToUrl(input);
+      const titleHint = extractTitleHint(input);
+      const resolved = await resolveInputToUrl(input, titleHint);
 
       if (!resolved?.url) {
         await react(sock, msg, "❌");
@@ -1083,7 +1088,7 @@ export default {
 
       const finalData = {
         ...apiData,
-        title: apiData.title || resolved.title,
+        title: resolved.title || apiData.title,
         thumbnail: apiData.thumbnail || resolved.thumbnail || "",
         author: apiData.author || resolved.author || "",
         duration: Number(apiData.duration || resolved.duration || 0),

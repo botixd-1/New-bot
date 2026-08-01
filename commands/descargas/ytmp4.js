@@ -282,13 +282,18 @@ function parseInput(input) {
   };
 }
 
-async function resolveVideo(input) {
+function extractTitleHint(text = "") {
+  const match = String(text || "").match(/➠\s*Titulo:\s*(.+)/i);
+  return match ? clean(match[1]) : "";
+}
+
+async function resolveVideo(input, titleHint = "") {
   const url = ytUrl(input);
 
   if (url) {
     return {
       url,
-      title: "YouTube Video",
+      title: titleHint || "YouTube Video",
       duration: "",
       author: "",
       thumbnail: "",
@@ -491,22 +496,39 @@ async function downloadFile(url, name, signal) {
 
   const tempPath = path.join(TMP_DIR, `${Date.now()}-${randomUUID()}.mp4`);
 
-  const res = await axios.get(url, {
-    responseType: "stream",
-    timeout: FILE_TIMEOUT,
-    signal,
-    headers: {
-      "User-Agent": UA,
-      Accept: "*/*",
-      Referer: `${API_BASE}/`,
-    },
-    httpAgent: HTTP_AGENT,
-    httpsAgent: HTTPS_AGENT,
-    maxRedirects: 5,
-    maxBodyLength: Infinity,
-    maxContentLength: Infinity,
-    validateStatus: () => true,
-  });
+  const TRANSIENT_STATUSES = [502, 503, 504];
+  const MAX_STREAM_RETRIES = 4;
+  const STREAM_RETRY_DELAY_MS = 2000;
+
+  let res = null;
+
+  for (let attempt = 1; attempt <= MAX_STREAM_RETRIES; attempt++) {
+    throwIfAborted(signal);
+
+    res = await axios.get(url, {
+      responseType: "stream",
+      timeout: FILE_TIMEOUT,
+      signal,
+      headers: {
+        "User-Agent": UA,
+        Accept: "*/*",
+        Referer: `${API_BASE}/`,
+      },
+      httpAgent: HTTP_AGENT,
+      httpsAgent: HTTPS_AGENT,
+      maxRedirects: 5,
+      maxBodyLength: Infinity,
+      maxContentLength: Infinity,
+      validateStatus: () => true,
+    });
+
+    if (!TRANSIENT_STATUSES.includes(res.status) || attempt === MAX_STREAM_RETRIES) {
+      break;
+    }
+
+    res.data?.destroy?.();
+    await new Promise((resolve) => setTimeout(resolve, STREAM_RETRY_DELAY_MS * attempt));
+  }
 
   if (res.status >= 400) {
     res.data?.destroy?.();
@@ -611,8 +633,6 @@ function caption(data = {}) {
   const lines = [
     "「🎬 YTMP4 」",
     "",
-    `✦ *${clip(data.title || data.fileName || "YouTube Video", 65)}*`,
-    "",
   ];
 
   if (data.author) lines.push(`➤ Canal: ${clip(data.author, 40)}`);
@@ -716,7 +736,8 @@ export default {
         );
       }
 
-      const video = await resolveVideo(parsed.query || input);
+      const titleHint = extractTitleHint(input);
+      const video = await resolveVideo(parsed.query || input, titleHint);
 
       if (!video?.url) {
         return sock.sendMessage(
@@ -754,7 +775,7 @@ export default {
 
       const meta = {
         ...apiData,
-        title: apiData.title || video.title,
+        title: video.title || apiData.title,
         duration: video.duration,
         author: video.author,
         thumbnail: apiData.thumbnail || video.thumbnail,
