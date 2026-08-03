@@ -302,6 +302,44 @@ function parseSpotifyResults(data) {
 
 // ============ OBTENER INFO DE DESCARGA ============
 
+async function pollSpotifyJob(statusUrlPath) {
+  const timeoutMs = 90000;
+  const intervalMs = 2500;
+  const deadline = Date.now() + timeoutMs;
+  const statusUrl = buildDvyerUrl(statusUrlPath);
+
+  while (Date.now() < deadline) {
+    const response = await axios.get(statusUrl, {
+      timeout: REQUEST_TIMEOUT,
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        Accept: "application/json",
+      },
+      validateStatus: () => true,
+    });
+
+    console.log(`[SPOTIFY] Consultando job - Status: ${response.status}`);
+
+    if (response.status >= 400) {
+      throw new Error(`Error consultando el job: HTTP ${response.status}`);
+    }
+
+    const data = response.data;
+
+    if (data?.state === "error" || data?.state === "failed") {
+      throw new Error(data?.message || "El procesamiento de Spotify fallo.");
+    }
+
+    if (data?.ready === true || (data?.state && data.state !== "processing")) {
+      return data;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, intervalMs));
+  }
+
+  throw new Error("Spotify tardo demasiado en procesar el audio. Intenta de nuevo.");
+}
+
 async function getSpotifyDownloadInfo(input) {
   try {
     const cleanInput = cleanText(input);
@@ -335,28 +373,38 @@ async function getSpotifyDownloadInfo(input) {
       throw new Error(`Error API: ${errorMsg}`);
     }
 
-    const data = response.data;
-    const selected = data.selected || data;
-    const downloadUrl = selected.download_url_full || selected.download_url || data.download_url_full || data.download_url;
+    let data = response.data;
+
+    if (response.status === 202 || data?.ready === false || data?.state === "processing") {
+      if (!data?.status_url) {
+        throw new Error("La API no devolvio informacion para consultar el progreso.");
+      }
+      console.log(`[SPOTIFY] Job en proceso, consultando: ${data.status_url}`);
+      data = await pollSpotifyJob(data.status_url);
+    }
+
+    const payload = data.result || data;
+    const selected = payload.selected || payload;
+    const downloadUrl = selected.download_url_full || selected.download_url || payload.download_url_full || payload.download_url;
 
     if (!downloadUrl) {
       console.error("[SPOTIFY] Respuesta API:", JSON.stringify(data, null, 2));
       throw new Error("La API no devolvió enlace de descarga");
     }
 
-    const title = cleanText(selected.title || data.title || "spotify");
-    const artist = cleanText(selected.artist || data.artist || "Spotify");
+    const title = cleanText(selected.title || payload.title || "spotify");
+    const artist = cleanText(selected.artist || payload.artist || "Spotify");
 
     console.log(`[SPOTIFY] Info obtenida - ${title} / ${artist}`);
 
     return {
       title: title,
       artist: artist,
-      duration: selected.duration || data.duration || null,
-      thumbnail: improveSpotifyThumbnail(selected.thumbnail || data.thumbnail || ""),
-      spotifyUrl: selected.spotify_url || data.spotify_url || "",
+      duration: selected.duration || payload.duration || null,
+      thumbnail: improveSpotifyThumbnail(selected.thumbnail || payload.thumbnail || ""),
+      spotifyUrl: selected.spotify_url || payload.spotify_url || "",
       fileName: normalizeAudioFileName(
-        selected.filename || data.filename || `${title} - ${artist}`,
+        selected.filename || payload.filename || `${title} - ${artist}`,
         `${title} - ${artist}`,
         "mp3"
       ),
